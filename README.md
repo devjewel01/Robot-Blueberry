@@ -11,7 +11,7 @@
 
 | Name               | Post               | Email                         |  Github                        | Facebook                                  | 
 | ------------------ | ---------          | ----------------------------- |------------------------------- | ----------------------------------------- |
-| **Shanjit Mondal** | `Circuit Designer` | shanjitmondal@gmail.com       | https://cutt.ly/Xvff3kF        | https://www.facebook.com/shanjit.mondol.50|
+| **Shanjit Mondal** | `Circuit Designer` | shanjitmondal11@gmail.com       | https://cutt.ly/Xvff3kF        | https://www.facebook.com/shanjit.mondol.50|
 | **Jewel Nath**     | `Programmer`       | devjewel.cou.ict10@gmail.com  | https://github.com/DevJewel143 | https://www.facebook.com/dev.jewel.5/     |
 | **Mestu Paul**     | `Programmer`       |paulmestu@gmail.com            | https://github.com/Mestu-Paul  | https://www.facebook.com/mestu.paul.812   |
 

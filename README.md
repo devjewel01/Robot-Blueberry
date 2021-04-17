@@ -19,7 +19,7 @@
 <br />
 
 <!--lint ignore double-link-->
-<img src="gif/robothand.gif" align="right" width="40%" />
+<img src="gif/robothand.gif" align="right" width="35%" />
 
 <br/>
 <br/>
@@ -35,7 +35,7 @@
 8. **Makeup Mannequin** as a robot face
 
 <!--lint ignore double-link-->
-<img src="gif/pushup.gif" align="right" width="40%" />
+<img src="gif/pushup.gif" align="right" width="60%" />
 
 <br />
 <br />
@@ -51,6 +51,7 @@
 <img align="right" src="https://i.imgur.com/BzOnbkS.gif" />
 
 
+<br />
 <br />
 
 ## Programming Language and tools we used - 

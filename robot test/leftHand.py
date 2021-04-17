@@ -2,28 +2,25 @@ import RPi.GPIO as GPIO
 import time
 GPIO.setwarnings(False)
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11,GPIO.OUT)
-servo1=GPIO.PWM(11,50)
-servo1.start(0)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17,GPIO.OUT)
+servo=GPIO.PWM(17,50)
+servo.start(0)
 time.sleep(1)
 duty =2
 
 while duty<=12:
-    servo1.ChangeDutyCycle(duty)
+    servo.ChangeDutyCycle(duty)
     time.sleep(1)
     duty=duty+1
     
 time.sleep(2)
-'''servo1.ChangeDutyCycle(7)
-time.sleep(1)
-servo1.ChangeDutyCycle(2)
-time.sleep(1)
-servo1.ChangeDutyCycle(0)'''
+
 while duty>=0:
-    servo1.ChangeDutyCycle(duty)
+    servo.ChangeDutyCycle(duty)
     time.sleep(0.05)
     duty=duty-1
-servo1.stop()
+    
+servo.stop()
 GPIO.cleanup()
 print('done')

@@ -16,12 +16,12 @@
 | **Mestu Paul**     | `Programmer`       |paulmestu@gmail.com            | https://github.com/Mestu-Paul  | https://www.facebook.com/mestu.paul.812   |
 
 <br />
-<br />
+
 
 <!--lint ignore double-link-->
 <img src="gif/robothand.gif" align="right" width="30%" />
 
-<br/>
+
 <br/>
 
 ## Here we used:
@@ -38,7 +38,7 @@
 <img src="gif/pushup.gif" align="right" width="30%" />
 
 <br />
-<br />
+
 
 ## It's able to -
 * Take a cammand and replay accrding to command

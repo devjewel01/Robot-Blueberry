@@ -18,6 +18,12 @@
 <br />
 <br />
 
+<!--lint ignore double-link-->
+<img src="gif/robothand.gif" align="right" width="40%" />
+
+<br/>
+<br/>
+
 ## Here we used:
 1. **Raspberry Pi** as a cpu of our robot
 2. **Servo Motors** for various hand's move
@@ -28,6 +34,12 @@
 7. **Aluminium** sheet, **Aluminum** angle, **SS** for making robot body
 8. **Makeup Mannequin** as a robot face
 
+<!--lint ignore double-link-->
+<img src="gif/pushup.gif" align="right" width="40%" />
+
+<br />
+<br />
+
 ## It's able to -
 * Take a cammand and replay accrding to command
 * Hand's UP
@@ -37,6 +49,9 @@
 * Turn left and right
 <!--lint ignore double-link-->
 <img align="right" src="https://i.imgur.com/BzOnbkS.gif" />
+
+
+<br />
 
 ## Programming Language and tools we used - 
 | Python | C++ |  Bash | Terminal | Raspberry Pi |  Arduino |

@@ -19,7 +19,7 @@
 <br />
 
 <!--lint ignore double-link-->
-<img src="gif/robothand.gif" align="right" width="35%" />
+<img src="gif/robothand.gif" align="right" width="30%" />
 
 <br/>
 <br/>
@@ -35,7 +35,7 @@
 8. **Makeup Mannequin** as a robot face
 
 <!--lint ignore double-link-->
-<img src="gif/pushup.gif" align="right" width="60%" />
+<img src="gif/pushup.gif" align="right" width="30%" />
 
 <br />
 <br />
@@ -47,12 +47,11 @@
 * Salute
 * Go forward and backword
 * Turn left and right
+
+
 <!--lint ignore double-link-->
 <img align="right" src="https://i.imgur.com/BzOnbkS.gif" />
 
-
-<br />
-<br />
 
 ## Programming Language and tools we used - 
 | Python | C++ |  Bash | Terminal | Raspberry Pi |  Arduino |
@@ -61,7 +60,7 @@
 
 <br />
 <br />
-<br />
+
 
 #### This project is based on  [shivasiddharth project](https://github.com/shivasiddharth), [Picovoice model](https://github.com/Picovoice/porcupine), [Simon Monk book](https://github.com/simonmonk) 
 

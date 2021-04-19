@@ -29,6 +29,27 @@ def changeDeg(pin1,new1):
         h.servo[pin1].angle=now1
         time.sleep(0.05)
     cur[pin1]=now1
-while True:
-    changeDeg((int)(input("pin ")),(int)(input("deg ")))
-    
+#for i in range(0,12):
+ #   h.servo[i].angle=init[i]
+
+'''*** salute ***
+>>start
+7 0
+3 180
+7 80
+6 60
+>>normal
+7 180
+3 0
+6 170
+*** salute close ***'''
+#start
+changeDeg(7,0)
+changeDeg(3,180)
+changeDeg(7,80)
+changeDeg(6,60)
+time.sleep(2)
+#normal
+changeDeg(7,180)
+changeDeg(3,0)
+changeDeg(6,170)

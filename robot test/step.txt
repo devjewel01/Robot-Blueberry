@@ -1,0 +1,65 @@
+*** salute **
+>>start
+pin	degree
+7	0
+3	180
+7	80
+6	60
+>>normal
+7	180
+3	0
+6	170
+*** salute close ***
+
+***  hug ***
+
+>> start
+
+pin	degree	pin	degree
+7	0	10	180
+3	90	4	90
+2	50	5	150
+7	50	10	130
+6	90	9	90
+>>stop
+
+7	180	10	0
+3	0	4	180
+2	20	5	160
+6	170	9	10
+*** hug close ***
+
+*** hand_shake ***
+>>start
+
+pin	degree
+3	60
+7	150
+>>shake
+
+loop : 5times
+   odd  170
+   even 120
+>>normal
+
+7	180
+3	0
+*** close hand_shake ***
+
+*** hand's_up.py  ***
+>>start
+
+pin	degree	pin	degree
+10	180	7	0
+5	40	2	140
+4	90	3	90
+10	130	7	70
+
+>>stop
+
+10	0	7	180
+4	180	3	0
+5	160	2	20
+
+*** close hand's_up.py ***
+

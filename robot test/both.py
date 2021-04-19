@@ -21,6 +21,10 @@ while duty>=0:
     servo1.ChangeDutyCycle(duty)
     time.sleep(0.05)
     duty=duty-1
+while duty>=0:
+    servo1.ChangeDutyCycle(duty)
+    time.sleep(0.05)
+    duty=duty-1
     
     
 servo1.stop()

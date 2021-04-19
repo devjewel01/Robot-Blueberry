@@ -11,12 +11,18 @@
 
 | Name               | Post               | Email                         |  Github                        | Facebook                                  | 
 | ------------------ | ---------          | ----------------------------- |------------------------------- | ----------------------------------------- |
-| **Shanjit Mondal** | `Circuit Designer` | shanjitmondal@gmail.com       | https://cutt.ly/Xvff3kF        | https://www.facebook.com/shanjit.mondol.50|
+| **Shanjit Mondal** | `Circuit Designer` | shanjitmondal11@gmail.com       | https://cutt.ly/Xvff3kF        | https://www.facebook.com/shanjit.mondol.50|
 | **Jewel Nath**     | `Programmer`       | devjewel.cou.ict10@gmail.com  | https://github.com/DevJewel143 | https://www.facebook.com/dev.jewel.5/     |
 | **Mestu Paul**     | `Programmer`       |paulmestu@gmail.com            | https://github.com/Mestu-Paul  | https://www.facebook.com/mestu.paul.812   |
 
 <br />
-<br />
+
+
+<!--lint ignore double-link-->
+<img src="gif/robothand.gif" align="right" width="30%" />
+
+
+<br/>
 
 ## Here we used:
 1. **Raspberry Pi** as a cpu of our robot
@@ -28,6 +34,12 @@
 7. **Aluminium** sheet, **Aluminum** angle, **SS** for making robot body
 8. **Makeup Mannequin** as a robot face
 
+<!--lint ignore double-link-->
+<img src="gif/pushup.gif" align="right" width="30%" />
+
+<br />
+
+
 ## It's able to -
 * Take a cammand and replay accrding to command
 * Hand's UP
@@ -35,8 +47,11 @@
 * Salute
 * Go forward and backword
 * Turn left and right
+
+
 <!--lint ignore double-link-->
 <img align="right" src="https://i.imgur.com/BzOnbkS.gif" />
+
 
 ## Programming Language and tools we used - 
 | Python | C++ |  Bash | Terminal | Raspberry Pi |  Arduino |
@@ -45,7 +60,7 @@
 
 <br />
 <br />
-<br />
+
 
 #### This project is based on  [shivasiddharth project](https://github.com/shivasiddharth), [Picovoice model](https://github.com/Picovoice/porcupine), [Simon Monk book](https://github.com/simonmonk) 
 

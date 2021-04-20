@@ -19,18 +19,21 @@ limitHi = [35,180,180,180,180,160,170,180,180,180,180,150]
 
 cur = init
 
-def changeDeg(pin , new):
-    if(new<cur[pin]):
-        #new = max(new,limitLo[pin])
-        for i in range(cur[pin],new-1,-5):
-            h.servo[pin].angle = i
-            time.sleep(0.05)
-    else:
-        #new = min(new,limitHi[pin])
-        for i in range(cur[pin]+1,new,5):
-            h.servo[pin].angle=i
-            time.sleep(0.05)
-    cur[pin]=new
+def changeDeg(pin,newDegree):
+    maxChange = 0
+    pinSize = len(pin)
+    for i in range(0,pinSize):
+        mx = max(abs(cur[pin[i]]-newDegree[pin[i]]),mx)
+    for deg in range(0,maxChange,5):
+        for i in range(0,pinSize):
+            if cur[pin[i]]<newDegree[pin[i]]:
+                cur[pin[i]] += 5
+            elif cur[pin[i]]>newDegree[pin[i]]:
+                cur[pin[i]] -= 5
+
+        for i in range(0,pinSize):
+            h.servo[pin[i]].angle = cur[pin[i]]
+        time.sleep(0.05)
 for i in range(0,12):
     h.servo[i].angle=init[i]
     time.sleep(0.05)

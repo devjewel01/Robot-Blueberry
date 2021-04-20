@@ -1,5 +1,5 @@
 
-# Robot Rim
+# Robot Leena
 
 ## **It is Raspberry Pi based Humanoid Robot**
 <br />

@@ -23,17 +23,18 @@ def changeDeg(pin,newDegree):
     maxChange = 0
     pinSize = len(pin)
     for i in range(0,pinSize):
-        mx = max(abs(cur[pin[i]]-newDegree[pin[i]]),mx)
+        maxChange = max(abs(cur[pin[i]]-newDegree[i]),maxChange)
     for deg in range(0,maxChange,5):
         for i in range(0,pinSize):
-            if cur[pin[i]]<newDegree[pin[i]]:
+            if cur[pin[i]]<newDegree[i]:
                 cur[pin[i]] += 5
-            elif cur[pin[i]]>newDegree[pin[i]]:
+            elif cur[pin[i]]>newDegree[i]:
                 cur[pin[i]] -= 5
 
         for i in range(0,pinSize):
             h.servo[pin[i]].angle = cur[pin[i]]
         time.sleep(0.05)
+#function closed
 while True:
-    changeDeg((int)(input("pin1")),(int)(input("deg1")),(int)(input("pin2")),(int)(input("deg2")))
+    changeDeg((int)(input("pin1")),(int)(input("pin2")),(int)(input("deg1")),(int)(input("deg2")))
     

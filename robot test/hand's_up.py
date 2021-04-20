@@ -40,13 +40,13 @@ for i in range(0,12):
 time.sleep(1)
 
 #start
-changeDeg(10,180,7,0)
-changeDeg(5,40,2,140)
-changeDeg(4,90,3,90)
-changeDeg(10,130,7,70)
+changeDeg([10,7],[180,0])
+changeDeg([5,2],[40,140])
+changeDeg([4,3],[90,90])
+changeDeg([10,7],[130,70])
 time.sleep(2)
 #normal
-changeDeg(10,0,7,180)
-changeDeg(4,180,3,0)
-changeDeg(5,160,2,20)
+changeDeg([10,7],[0,180)
+changeDeg([4,3],[180,0)
+changeDeg([5,2],[160,20])
 time.sleep(2)

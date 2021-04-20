@@ -35,7 +35,6 @@ def changeDeg(pin,newDegree):
             h.servo[pin[i]].angle = cur[pin[i]]
         time.sleep(0.05)
 #function closed
-#fot test
 while True:
     changeDeg((int)(input("pin1")),(int)(input("pin2")),(int)(input("deg1")),(int)(input("deg2")))
     

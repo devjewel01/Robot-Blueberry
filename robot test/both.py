@@ -1,3 +1,5 @@
+
+#yes and no together
 import RPi.GPIO as GPIO
 import time
 GPIO.setwarnings(False)

@@ -28,15 +28,23 @@ def changeDeg(pin1,new1,pin2,new2):
         time.sleep(0.05)
     cur[pin1]=now1
     cur[pin2]=now2
-    
-    
-for i in range(0,12):
-    h.servo[i].angle = init[i]
-    time.sleep(0.5)
-    
-#code write here
+
     
 for i in range(0,12):
     h.servo[i].angle = init[i]
-    time.sleep(0.5)
+time.sleep(1)    
+
+changeDeg(10,180,7,0)
+changeDeg(5,40,2,140)
+changeDeg(4,90,3,90)
+changeDeg(10,130,7,70)
+time.sleep(2)
+changeDeg(10,0,7,180)
+changeDeg(4,180,3,0)
+changeDeg(5,160,2,20)
+time.sleep(2)
+
+    
+for i in range(0,12):
+    h.servo[i].angle = init[i]
 

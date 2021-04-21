@@ -282,15 +282,17 @@ TextToSpeech:
 #Custom wakeword On/Off.
 #To enable custom wakeword, change status to Enabled and restart the assistant.
 Wakewords:
-  Ok_Google: 'Enabled'
+  Ok_Google: 'Disable'
   Custom_Wakeword: 'Enabled'
   #Set below to 'Picovoice' or 'Snowboy' as per your choice.
-  Wakeword_Engine: 'Snowboy'
+  Wakeword_Engine: 'Picovoice'
   Snowboy_wakeword_models:
     - '/home/pi/GassistPi/src/resources/snowboy_models/alexa.umdl'
-    - '/home/pi/GassistPi/src/resources/snowboy_models/snowboy.umdl'
   Picovoice_wakeword_models:
-    - '/home/pi/GassistPi/src/resources/picovoice_models/americano_raspberry-pi.ppn'
+    - '/home/pi/GassistPi/src/resources/picovoice_models/hey_lena_raspberry-pi_2021-05-21-utc_v1_9_0'
+    - '/home/pi/GassistPi/src/resources/picovoice_models/hey_mena_raspberry-pi_2021-05-21-utc_v1_9_0'
+    - '/home/pi/GassistPi/src/resources/picovoice_models/hey_rim_raspberry-pi_2021-04-27-utc_v1_9_0'
+    
 
 #Wemo/Emulated Wemo devices
 Wemo:

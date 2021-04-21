@@ -14,7 +14,11 @@ Keywords:
     - 'kickstarter'
   # Pi power off, servo control and Pi GPIO control
   Pi_GPIO_control:
-    - 'trigger'
+    - 'move'
+    - 'mop'
+    - 'mob'
+    - 'turn'
+    - 'robot'
   # Stream songs from YouTube
   YouTube_music_stream:
     - 'youtube'

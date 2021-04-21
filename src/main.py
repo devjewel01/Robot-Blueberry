@@ -808,7 +808,7 @@ class Myassistant():
             self.assistant.stop_conversation()
             kickstarter_tracker(str(usrcmd).lower())
         if configuration['Raspberrypi_GPIO_Control']['GPIO_Control']=='Enabled':
-            if (custom_action_keyword['Keywords']['Pi_GPIO_control'][0]).lower() in str(usrcmd).lower():
+            if (custom_action_keyword['Keywords']['Pi_GPIO_control'][0]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][1]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][2]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][3]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][4]).lower() in str(usrcmd).lower():
                 self.assistant.stop_conversation()
                 Action(str(usrcmd).lower())
         if configuration['YouTube']['YouTube_Control']=='Enabled':

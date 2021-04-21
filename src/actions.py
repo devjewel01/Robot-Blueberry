@@ -39,6 +39,7 @@ import spotipy
 import pprint
 import yaml
 import pywemo
+from robotMove import *
 
 ROOT_PATH = os.path.realpath(os.path.join(__file__, '..', '..'))
 USER_PATH = os.path.realpath(os.path.join(__file__, '..', '..','..'))
@@ -1791,6 +1792,21 @@ def Action(phrase):
         time.sleep(10)
         os.system("sudo shutdown -h now")
         #subprocess.call(["shutdown -h now"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    elif 'salute' in phrase:
+        salute()
+    elif 'hand shake' in phrase:
+        hand_shake()
+    elif 'hands up' in phrase:
+        hands_up()
+    elif 'your head' in phrase:
+        touch_head()
+    elif 'your nose' in phrase:
+        touch_nose()
+    elif 'your eye' in phrase:
+        touch_eye()
+    elif 'your ear' in phrase:
+        touch_ear()
+    
     if 'servo' in phrase:
         for s in re.findall(r'\b\d+\b', phrase):
             SetAngle(int(s))

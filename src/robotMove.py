@@ -85,9 +85,16 @@ def hand_shake():
     takePositionSlow
 
 def salute():
+#salute
     takePosition()
-    #
-    #
+    changeDegree(7,0)
+    changeDegree(3,180)
+    changeDegree(7,80)
+    changeDegree(6,60)
+#normal
+    changeDegree(7,180)
+    changeDegree(3,0)
+    changeDegree(6,170)
     takePositionSlow()
 
 def touch_head():

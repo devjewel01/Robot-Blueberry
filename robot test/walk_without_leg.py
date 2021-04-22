@@ -40,6 +40,9 @@ for i in range(0,12):
 for i in range(0,26,5):
     h.servo[0].angle=i
     time.sleep(0.05)
-while True:
-    changeDeg([3,3,1],[90,180,60)
-    changeDeg([3,4,1],[0,90,120)
+times=10
+while times>0:
+    times-=1
+    changeDeg([3,4,1],[90,180,60])
+    changeDeg([3,4,1],[0,90,120])
+changeDeg([3,4,1],[init[3],init[4],init[1]])

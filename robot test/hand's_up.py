@@ -23,12 +23,12 @@ def changeDeg(pin,newDegree):
     maxChange = 0
     pinSize = len(pin)
     for i in range(0,pinSize):
-        mx = max(abs(cur[pin[i]]-newDegree[pin[i]]),mx)
+        maxChange = max(abs(cur[pin[i]]-newDegree[i]),maxChange)
     for deg in range(0,maxChange,5):
         for i in range(0,pinSize):
-            if cur[pin[i]]<newDegree[pin[i]]:
+            if cur[pin[i]]<newDegree[i]:
                 cur[pin[i]] += 5
-            elif cur[pin[i]]>newDegree[pin[i]]:
+            elif cur[pin[i]]>newDegree[i]:
                 cur[pin[i]] -= 5
 
         for i in range(0,pinSize):
@@ -46,7 +46,7 @@ changeDeg([4,3],[90,90])
 changeDeg([10,7],[130,70])
 time.sleep(2)
 #normal
-changeDeg([10,7],[0,180)
-changeDeg([4,3],[180,0)
+changeDeg([10,7],[0,180])
+changeDeg([4,3],[180,0])
 changeDeg([5,2],[160,20])
 time.sleep(2)

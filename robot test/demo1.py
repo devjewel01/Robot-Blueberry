@@ -36,5 +36,5 @@ def changeDeg(pin,newDegree):
         time.sleep(0.05)
 #function closed
 while True:
-    changeDeg((int)(input("pin1")),(int)(input("pin2")),(int)(input("deg1")),(int)(input("deg2")))
+    changeDeg([(int)(input("pin1")),(int)(input("pin2"))],[(int)(input("deg1")),(int)(input("deg2"))])
     

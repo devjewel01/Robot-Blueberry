@@ -51,14 +51,14 @@ def takePositionSlow():
 def hug():
 	takePosition()
 	time.sleep(1)
-	#start
+#start
 	changeDegree([7,10],[0,180])
 	changeDegree([3,4],[90,90])
 	changeDegree([2,5],[50,150])
 	changeDegree([7,10],[50,130])
 	changeDegree([6,9],[90,90])
 	time.sleep(2)
-	#stop
+#stop
 	changeDegree([7,10],[180,0])
 	changeDegree([3,4],[0,180])
 	changeDegree([2,5],[20,160])

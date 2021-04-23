@@ -1,19 +1,5 @@
 #!/usr/bin/env python
 
-# Copyright (C) 2017 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 from __future__ import print_function
 import faulthandler
 faulthandler.enable()
@@ -22,36 +8,6 @@ try:
     import RPi.GPIO as GPIO
 except Exception as e:
     GPIO = None
-import argparse
-import json
-import os.path
-import pathlib2 as pathlib
-import os
-import struct
-import subprocess
-import re
-import psutil
-import logging
-import time
-import random
-#Wakeword--------
-#Snowboy
-import snowboydecoder
-#Picovoice
-import numpy as np
-import pvporcupine
-import pyaudio
-import soundfile
-#--------------
-import sys
-import signal
-import requests
-import io
-import google.oauth2.credentials
-from google.assistant.library import Assistant
-from google.assistant.library.event import EventType
-from google.assistant.library.file_helpers import existing_file
-from google.assistant.library.device_helpers import register_device
 from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
@@ -69,8 +25,8 @@ from actions import track
 from actions import feed
 from actions import kodiactions
 from actions import mutevolstatus
-# from actions import gmusicselect
-# from actions import refreshlists
+
+
 from actions import chromecast_play_video
 from actions import chromecast_control
 from actions import kickstarter_tracker
@@ -81,14 +37,6 @@ from actions import spotify_playlist_select
 from actions import configuration
 from actions import custom_action_keyword
 from threading import Thread
-if GPIO!=None:
-    from indicator import assistantindicator
-    from indicator import stoppushbutton
-    from indicator import irreceiver
-    GPIOcontrol=True
-else:
-    irreceiver=None
-    GPIOcontrol=False
 from pathlib import Path
 from Adafruit_IO import MQTTClient
 from actions import Domoticz_Device_Control
@@ -109,6 +57,47 @@ from actions import langlist
 from audiorecorder import record_to_file
 from actions import wemocontrol
 from actions import wemodiscovery
+import argparse
+import json
+import os.path
+import pathlib2 as pathlib
+import os
+import struct
+import subprocess
+import re
+import psutil
+import logging
+import time
+import random
+
+#Wakeword--------
+#Snowboy
+import snowboydecoder
+#Picovoice
+import numpy as np
+import pvporcupine
+import pyaudio
+import soundfile
+#--------------
+
+import sys
+import signal
+import requests
+import io
+import google.oauth2.credentials
+from google.assistant.library import Assistant
+from google.assistant.library.event import EventType
+from google.assistant.library.file_helpers import existing_file
+from google.assistant.library.device_helpers import register_device
+if GPIO!=None:
+    from indicator import assistantindicator
+    from indicator import stoppushbutton
+    from indicator import irreceiver
+    GPIOcontrol=True
+else:
+    irreceiver=None
+    GPIOcontrol=False
+
 try:
     FileNotFoundError
 except NameError:
@@ -124,11 +113,11 @@ WARNING_NOT_REGISTERED = """
 """
 
 # Remove old logs
-if os.path.isfile('/tmp/GassistPi.log'):
-    os.system('sudo rm /tmp/GassistPi.log')
+if os.path.isfile('/tmp/robot.log'):
+    os.system('sudo rm /tmp/robot.log')
 
 logging.root.handlers = []
-logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.DEBUG , filename='/tmp/GassistPi.log')
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.DEBUG , filename='/tmp/robot.log')
 console = logging.StreamHandler()
 console.setLevel(logging.ERROR)
 formatter = logging.Formatter('%(asctime)s : %(levelname)s : %(message)s')
@@ -214,8 +203,9 @@ class Myassistant():
         self._keyword_paths = picovoice_models
         self._input_device_index = None
         self._sensitivities = [0.5]*wakeword_length
-        self.callbacks = [self.detected]*len(snowboy_models)
-        self.detector = snowboydecoder.HotwordDetector(snowboy_models, sensitivity=self._sensitivities)
+        if configuration['Wakewords']['Wakeword_Engine']=='Snowboy':
+            self.callbacks = [self.detected]*len(snowboy_models)
+            self.detector = snowboydecoder.HotwordDetector(snowboy_models, sensitivity=self._sensitivities)
         self.mutestatus=False
         self.interpreter=False
         self.interpconvcounter=0
@@ -808,7 +798,7 @@ class Myassistant():
             self.assistant.stop_conversation()
             kickstarter_tracker(str(usrcmd).lower())
         if configuration['Raspberrypi_GPIO_Control']['GPIO_Control']=='Enabled':
-            if (custom_action_keyword['Keywords']['Pi_GPIO_control'][0]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][1]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][2]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][3]).lower() or custom_action_keyword['Keywords']['Pi_GPIO_control'][4]).lower() in str(usrcmd).lower():
+            if (custom_action_keyword['Keywords']['Pi_GPIO_control'][0]).lower() in str(usrcmd).lower():
                 self.assistant.stop_conversation()
                 Action(str(usrcmd).lower())
         if configuration['YouTube']['YouTube_Control']=='Enabled':
@@ -1094,7 +1084,7 @@ class Myassistant():
             if gender=='Male':
                 subprocess.Popen(["aplay", "{}/sample-audio-files/Startup-Male.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             else:
-                subprocess.Popen(["aplay", "{}/sample-audio-files/Startup-Female.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                subprocess.Popen(["aplay", "/home/pi/Robot-Leena/sample-audio-files/welcome leena.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             events = assistant.start()
             device_id = assistant.device_id
             print('device_model_id:', device_model_id)
@@ -1129,3 +1119,4 @@ if __name__ == '__main__':
         Myassistant().main()
     except Exception as error:
         logging.exception(error)
+

@@ -1,0 +1,18 @@
+[Unit]
+Description=Google Assistant-Voice
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Environment=VIRTUAL_ENV=/home/pi/env
+Environment=PATH=/home/pi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/pi/env/bin/python -u /home/pi/Robot-Leena/src/main.py --project_id 'voice-90115' --device_model_id 'voice-90115-rpi4-lkblfp'
+
+WorkingDirectory=/home/pi/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

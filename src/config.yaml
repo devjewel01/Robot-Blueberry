@@ -118,7 +118,7 @@ Gpios:
     - 05
     - 06
   ir:
-    - 17
+    - 19
   picontrol:
     - 12
     - 13
@@ -126,7 +126,7 @@ Gpios:
   pushbutton_trigger:
     - 22
   servo:
-    - 27
+    - 13
   stopbutton_music_AIY_pushbutton:
     - 23
 
@@ -282,16 +282,15 @@ TextToSpeech:
 #Custom wakeword On/Off.
 #To enable custom wakeword, change status to Enabled and restart the assistant.
 Wakewords:
-  Ok_Google: 'Disable'
+  Ok_Google: 'Enabled'
   Custom_Wakeword: 'Enabled'
   #Set below to 'Picovoice' or 'Snowboy' as per your choice.
   Wakeword_Engine: 'Picovoice'
   Snowboy_wakeword_models:
     - '/home/pi/GassistPi/src/resources/snowboy_models/alexa.umdl'
   Picovoice_wakeword_models:
-    - '/home/pi/GassistPi/src/resources/picovoice_models/hey_lena_raspberry-pi_2021-05-21-utc_v1_9_0'
-    - '/home/pi/GassistPi/src/resources/picovoice_models/hey_mena_raspberry-pi_2021-05-21-utc_v1_9_0'
-    - '/home/pi/GassistPi/src/resources/picovoice_models/hey_rim_raspberry-pi_2021-04-27-utc_v1_9_0'
+    - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey barista_raspberry-pi.ppn'
+    - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
     
 
 #Wemo/Emulated Wemo devices

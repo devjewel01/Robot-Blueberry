@@ -18,6 +18,7 @@ from youtube_search_engine import youtube_search
 from youtube_search_engine import youtube_stream_link
 from google.cloud import texttospeech
 from gtts import gTTS
+from robotMove import *
 import requests
 import mediaplayer
 import os
@@ -39,17 +40,16 @@ import spotipy
 import pprint
 import yaml
 import pywemo
-from robotMove import *
 
 ROOT_PATH = os.path.realpath(os.path.join(__file__, '..', '..'))
 USER_PATH = os.path.realpath(os.path.join(__file__, '..', '..','..'))
 
 
 with open('{}/src/config.yaml'.format(ROOT_PATH),'r', encoding='utf8') as conf:
-    configuration = yaml.load(conf)
+    configuration = yaml.load(conf, Loader=yaml.FullLoader)
 
 with open('{}/src/lang.yaml'.format(ROOT_PATH),'r', encoding='utf8') as lang:
-    langlist = yaml.load(lang)
+    langlist = yaml.load(lang, Loader=yaml.FullLoader)
 
 TTSChoice=''
 if configuration['TextToSpeech']['Choice']=="Google Cloud":
@@ -92,7 +92,7 @@ elif 'sv' in configuration['Language']['Choice']:
 else:
     keywordfile= '{}/src/keywords_en.yaml'.format(ROOT_PATH)
 with open(keywordfile,'r' , encoding='utf8') as conf:
-    custom_action_keyword = yaml.load(conf)
+    custom_action_keyword = yaml.load(conf, Loader=yaml.FullLoader)
 
 
 # Get devices list from domoticz server
@@ -152,21 +152,21 @@ if GPIO!=None:
     GPIO.setwarnings(False)
     #Number of entities in 'var' and 'PINS' should be the same
     var = configuration['Raspberrypi_GPIO_Control']['lightnames']
-    gpio = configuration['Gpios']['picontrol']
+    '''gpio = configuration['Gpios']['picontrol']
     for pin in gpio:
         GPIO.setup(pin, GPIO.OUT)
-        GPIO.output(pin, 0)
+        GPIO.output(pin, 0)'''
 
     #Servo pin declaration
-    servopin=configuration['Gpios']['servo'][0]
+    '''servopin=configuration['Gpios']['servo'][0]
     GPIO.setup(servopin, GPIO.OUT)
     pwm=GPIO.PWM(servopin, 50)
-    pwm.start(0)
+    pwm.start(0)'''
 
     #Stopbutton
-    stoppushbutton=configuration['Gpios']['stopbutton_music_AIY_pushbutton'][0]
+    '''stoppushbutton=configuration['Gpios']['stopbutton_music_AIY_pushbutton'][0]
     GPIO.setup(stoppushbutton, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-    GPIOcontrol=True
+    GPIOcontrol=True'''
 else:
     GPIOcontrol=False
 
@@ -1792,22 +1792,17 @@ def Action(phrase):
         time.sleep(10)
         os.system("sudo shutdown -h now")
         #subprocess.call(["shutdown -h now"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    elif 'salute' in phrase:
-        salute()
-    elif 'hand shake' in phrase:
-        hand_shake()
-    elif 'hands up' in phrase:
-        hands_up()
-    elif 'your head' in phrase:
-        touch_head()
-    elif 'your nose' in phrase:
-        touch_nose()
-    elif 'your eye' in phrase:
-        touch_eye()
-    elif 'your ear' in phrase:
-        touch_ear()
+    if "thank you" in phrase:
+        print('i am trying')
+        print(phrase)
+        os.system('python /home/pi/test.py')
+    elif "hug me" or "hug" in phrase:
+        os.system('python /home/pi/t1.py')
+        print('it is worked')
+        print(phrase)
     
-    if 'servo' in phrase:
+    
+    '''if 'servo' in phrase:
         for s in re.findall(r'\b\d+\b', phrase):
             SetAngle(int(s))
         if 'zero' in phrase:
@@ -1824,4 +1819,4 @@ def Action(phrase):
                         GPIO.output(pinout, 0)
                         say("Turning Off " + name)
         else:
-            say("GPIO controls, is not supported for your device.")
+            say("GPIO controls, is not supported for your device.")'''

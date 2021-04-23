@@ -1,17 +1,6 @@
 #!/bin/bash
-# Copyright 2017 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+
+
 set -o errexit
 
 scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
@@ -35,7 +24,7 @@ echo ""
 
 
 sudo apt-get update -y
-sed 's/#.*//' ${GIT_DIR}/Requirements/GassistPi-system-requirements.txt | xargs sudo apt-get install -y
+sed 's/#.*//' ${GIT_DIR}/Requirements/robot-system-requirements.txt | xargs sudo apt-get install -y
 
 
 #Check OS Version
@@ -142,7 +131,7 @@ echo ""
 cd /home/${USER}/
 
 #Copy snowboy wrappers for Stretch or Buster and create new ones for other OSes.
-echo "Copying Snowboy files to GassistPi directory"
+echo "Copying Snowboy files to Robot directory"
 echo ""
 if [[ $osversion = "Raspbian Buster" ]]; then
   sudo \cp -f ${GIT_DIR}/src/resources/Buster-wrapper/_snowboydetect.so ${GIT_DIR}/src/_snowboydetect.so
@@ -179,7 +168,7 @@ if [[ $osversion != "Raspbian Stretch" ]] && [[ $osversion != "Raspbian Buster" 
   sudo make
 
   if [ -e /home/${USER}/programs/snowboy/swig/Python3/_snowboydetect.so ]; then
-    echo "Copying Snowboy files to GassistPi directory"
+    echo "Copying Snowboy files to Robot directory"
     sudo \cp -f ./_snowboydetect.so ${GIT_DIR}/src/_snowboydetect.so
     sudo \cp -f ./snowboydetect.py ${GIT_DIR}/src/snowboydetect.py
   else
@@ -192,7 +181,7 @@ python3 -m venv env
 env/bin/python -m pip install --upgrade pip setuptools wheel
 source env/bin/activate
 
-pip install -r ${GIT_DIR}/Requirements/GassistPi-pip-requirements.txt
+pip install -r ${GIT_DIR}/Requirements/robotS-pip-requirements.txt
 
 if [[ $board = "Raspberry" ]] && [[ $osversion != "OSMC Stretch" ]];then
 	pip install RPi.GPIO>=0.6.3
@@ -226,18 +215,18 @@ else
     echo ""
     echo ""
     echo "Changing particulars in service files for Ok-Google hotword......."
-    sed -i '/pushbutton.py/d' ${GIT_DIR}/systemd/gassistpi.service
-    sed -i 's/created-project-id/'$projid'/g' ${GIT_DIR}/systemd/gassistpi.service
-    sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/gassistpi.service
+    sed -i '/pushbutton.py/d' ${GIT_DIR}/systemd/robot.service
+    sed -i 's/created-project-id/'$projid'/g' ${GIT_DIR}/systemd/robot.service
+    sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/robot.service
   else
     echo ""
     echo ""
     echo "Changing particulars in service files for Pushbutton/Custom-wakeword......."
-    sed -i '/main.py/d' ${GIT_DIR}/systemd/gassistpi.service
-    sed -i 's/created-project-id/'$projid'/g' ${GIT_DIR}/systemd/gassistpi.service
-    sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/gassistpi.service
+    sed -i '/main.py/d' ${GIT_DIR}/systemd/robot.service
+    sed -i 's/created-project-id/'$projid'/g' ${GIT_DIR}/systemd/robot.service
+    sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/robot.service
   fi
-  sed -i 's/__USER__/'${USER}'/g' ${GIT_DIR}/systemd/gassistpi.service
+  sed -i 's/__USER__/'${USER}'/g' ${GIT_DIR}/systemd/robot.service
 fi
 echo ""
 echo ""

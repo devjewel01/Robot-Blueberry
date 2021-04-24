@@ -19,7 +19,7 @@
 
 
 <!--lint ignore double-link-->
-<img src="gif/robothand.gif" align="right" width="30%" />
+<img src="Store/gif/robothand.gif" align="right" width="30%" />
 
 
 <br/>
@@ -35,7 +35,7 @@
 8. **Makeup Mannequin** as a robot face
 
 <!--lint ignore double-link-->
-<img src="gif/pushup.gif" align="right" width="30%" />
+<img src="Store/gif/pushup.gif" align="right" width="30%" />
 
 <br />
 

@@ -1,4 +1,31 @@
- ## salute
+## Servo Initial positions:
+ 
+|servo no | position |
+| -----   | ------   |
+| 1 |     |  
+| 2 |     |       
+|3  |     |
+|4  |     |
+|5  |     |
+|6  |     |
+|7  |     |
+|8  |     |
+|9  |     |
+|10 |     |
+|11 |     |
+|12 |     |
+|13 |     |
+|14 |     |
+|15 |     |
+|16 |     |
+|17 |     |
+|18 |     |
+|19 |     |
+|20 |     |
+|21 |     |
+|22 |     |
+
+### salute
 
 >start.
 
@@ -20,7 +47,7 @@
 <br/>
 <br/>
 
-## Hug 
+### Hug 
 
 > start
 
@@ -44,7 +71,7 @@
 <br/>
 <br/>
 
-## hand_shake 
+### hand_shake 
 
 >start
 
@@ -73,7 +100,7 @@ for i in range(0, 10):
 <br/>
 <br/>
 
-## hand's_up.py  
+### hand's_up.py  
 
 >start
 

@@ -18,7 +18,6 @@ from youtube_search_engine import youtube_search
 from youtube_search_engine import youtube_stream_link
 from google.cloud import texttospeech
 from gtts import gTTS
-from robotMove import *
 import requests
 import mediaplayer
 import os
@@ -1791,32 +1790,13 @@ def Action(phrase):
         say('Shutting down Raspberry Pi')
         time.sleep(10)
         os.system("sudo shutdown -h now")
-        #subprocess.call(["shutdown -h now"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if "thank you" in phrase:
-        print('i am trying')
+    elif "hands up" in phrase:
         print(phrase)
-        os.system('python /home/pi/test.py')
     elif "hug me" or "hug" in phrase:
-        os.system('python /home/pi/t1.py')
-        print('it is worked')
         print(phrase)
-    
-    
-    '''if 'servo' in phrase:
-        for s in re.findall(r'\b\d+\b', phrase):
-            SetAngle(int(s))
-        if 'zero' in phrase:
-            SetAngle(0)
-    else:
-        if GPIOcontrol:
-            for num, name in enumerate(var):
-                if name.lower() in phrase:
-                    pinout=gpio[num]
-                    if custom_action_keyword['Dict']['On'] in phrase:
-                        GPIO.output(pinout, 1)
-                        say("Turning On " + name)
-                    elif custom_action_keyword['Dict']['Off'] in phrase:
-                        GPIO.output(pinout, 0)
-                        say("Turning Off " + name)
-        else:
-            say("GPIO controls, is not supported for your device.")'''
+    elif "salute" in phrase:
+    	print(phrase)
+    elif "hand shake" in phrase:
+    	print(phrase)
+    else 
+

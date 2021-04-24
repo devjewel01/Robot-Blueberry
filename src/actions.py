@@ -1790,13 +1790,43 @@ def Action(phrase):
         say('Shutting down Raspberry Pi')
         time.sleep(10)
         os.system("sudo shutdown -h now")
-    elif "hands up" in phrase:
-        print(phrase)
-    elif "hug me" or "hug" in phrase:
-        print(phrase)
-    elif "salute" in phrase:
-    	print(phrase)
-    elif "hand shake" in phrase:
-    	print(phrase)
-    else 
+    elif 'hands up' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hands_up.py")
+    elif 'hug me'  in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
+    elif 'salute' in phrase:
+    	os.system("python3 /home/pi/Robot-Leena/robot-control/salute.py")
+    elif 'hand shake' in phrase:
+    	os.system("python3 /home/pi/Robot-Leena/robot-control/hand_shake.py")
+    elif 'move your hand' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+    elif 'move your right hand' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/rightHand.py")
+    elif 'move your left hand' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/leftHand.py")
+    elif 'move your head' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/yes.py")
+        os.system("python3 /home/pi/Robot-Leena/robot-control/no.py")
+    elif 'left right' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/left-right.py")
+    elif 'tata' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/tata.py")
+    elif 'bye' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/bye.py")
+    elif 'touch your head' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/touchHead.py")
+    elif 'touch your nose' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/touchNose.py")
+    elif 'touch your ear' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/touchEar.py")
+    elif 'touch your eye' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/touchEye.py")
+    elif 'go forward' or 'go' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/goForward.py")
+    elif 'go back' or 'go backward' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/goBack.py")
+    elif 'turn left' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/turnLeft.py")
+    elif 'turn right' in phrase:
+        os.system("python3 /home/pi/Robot-Leena/robot-control/turnRight.py") 
 

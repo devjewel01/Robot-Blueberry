@@ -2,10 +2,11 @@
 # Robot Leena
 
 ## **It is Raspberry Pi based Humanoid Robot**
-<br />
 
 <!--lint ignore double-link-->
 <img src="https://i.imgur.com/qI1Jfyl.gif" align="right" width="60%" />
+
+<br/>
 
 ## It's made by team [robosouls](https://www.facebook.com/robosouls):
 
@@ -15,13 +16,11 @@
 | [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer](https://github.com/DevJewel143)       | devjewel.cou.ict10@gmail.com  |  
 | [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
 
-<br />
-
 
 <!--lint ignore double-link-->
 <img src="Store/gif/robothand.gif" align="right" width="30%" />
 
-
+</br>
 <br/>
 
 ## Here we used:

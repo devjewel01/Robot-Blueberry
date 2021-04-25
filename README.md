@@ -20,8 +20,6 @@
 <!--lint ignore double-link-->
 <img src="Store/gif/robothand.gif" align="right" width="30%" />
 
-</br>
-<br/>
 
 ## Here we used:
 1. **Raspberry Pi** as a cpu of our robot

@@ -9,11 +9,11 @@
 
 ## It's made by team [robosouls](https://www.facebook.com/robosouls):
 
-| Name               | Post               | Email                         |  Github                        | Facebook                                  | 
-| ------------------ | ---------          | ----------------------------- |------------------------------- | ----------------------------------------- |
-| **Shanjit Mondal** | `Circuit Designer` | shanjitmondal11@gmail.com       | https://cutt.ly/Xvff3kF        | https://www.facebook.com/shanjit.mondol.50|
-| **Jewel Nath**     | `Programmer`       | devjewel.cou.ict10@gmail.com  | https://github.com/DevJewel143 | https://www.facebook.com/dev.jewel.5/     |
-| **Mestu Paul**     | `Programmer`       |paulmestu@gmail.com            | https://github.com/Mestu-Paul  | https://www.facebook.com/mestu.paul.812   |
+| Name               | Post               | Email                         |  
+| ------------------ | ---------          | ----------------------------- |
+| [**Shanjit Mondal**](https://www.facebook.com/shanjit.mondol.50) | [Circuit Designer](https://github.com/shanjit11) | shanjitmondal11@gmail.com       | 
+| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer](https://github.com/DevJewel143)       | devjewel.cou.ict10@gmail.com  |  
+| [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
 
 <br />
 
@@ -60,6 +60,7 @@
 
 <br />
 <br />
+
 
 
 #### This project is based on  [shivasiddharth project](https://github.com/shivasiddharth), [Picovoice model](https://github.com/Picovoice/porcupine), [Simon Monk book](https://github.com/simonmonk) 

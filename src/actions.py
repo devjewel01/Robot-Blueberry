@@ -1829,4 +1829,3 @@ def Action(phrase):
         os.system("python3 /home/pi/Robot-Leena/robot-control/turnLeft.py")
     elif 'turn right' in phrase:
         os.system("python3 /home/pi/Robot-Leena/robot-control/turnRight.py") 
-

@@ -188,6 +188,6 @@ for i in range(0, 10):
 
 
 
-### The Contributing :pray: :dizzy:
+### Contributors :pray: :dizzy:
 ![105](https://contributors-img.web.app/image?repo=DevJewel143/Robot-Leena)
 

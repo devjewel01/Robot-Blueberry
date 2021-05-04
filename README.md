@@ -13,7 +13,7 @@
 | Name               | Post               | Email                         |  
 | ------------------ | ---------          | ----------------------------- |
 | [**Shanjit Mondal**](https://www.facebook.com/shanjit.mondol.50) | [Circuit Designer](https://github.com/shanjit11) | shanjitmondal11@gmail.com       | 
-| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer](https://github.com/DevJewel143)       | devjewel.cou.ict10@gmail.com  |  
+| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer](https://github.com/devjewel01)       | devjewel.cou.ict10@gmail.com  |  
 | [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
 
 

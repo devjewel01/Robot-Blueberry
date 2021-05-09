@@ -12,9 +12,9 @@
 
 | Name               | Post               | Email                         |  
 | ------------------ | ---------          | ----------------------------- |
-| [**Shanjit Mondal**](https://www.facebook.com/shanjit.mondol.50) | [Circuit Designer](https://github.com/shanjit11) | shanjitmondal11@gmail.com       | 
-| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer](https://github.com/devjewel01)       | devjewel.cou.ict10@gmail.com  |  
-| [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
+| [**Shanjit Mondal**](https://www.facebook.com/shanjit.mondol.50) | [Circuit  & Mechanical Designer](https://github.com/shanjit11) | shanjitmondal11@gmail.com       | 
+| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer(Software Developer)](https://github.com/devjewel01)       | devjewel.cou.ict10@gmail.com  |  
+| [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer(Software Developer)](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
 
 
 <!--lint ignore double-link-->
@@ -61,11 +61,11 @@
 ## Servo move direcection:
 ### Servo Initial positions:
  
-|servo no | position | Limitation |
-| -----   | ------   | ---------- |
-| 1 | 0   |  35 |
+|servo no | position | Limitation | Direction | Description  |  
+| -----   | ------   | ---------- | ----------- |  -------- | 
+| 1 | 0   |  35 |   
 | 2 | 90  |  180| 
-|3  | 20  | 0 |
+|3  | 20  |   0 |
 |4  |  0  | 180 |
 |5  | 180 | 140 |
 |6  | 160 | 180 |

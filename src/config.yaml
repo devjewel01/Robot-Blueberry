@@ -1,0 +1,86 @@
+
+Conversation:
+  Conversation_Control: 'Enabled'
+  question:
+    1:
+      - 'I love you'
+    2:
+      - 'Do you have a family'
+    3:
+      - 'What is your name'
+    4:
+      - 'who are you'
+    5:
+      - 'who made you'
+  answer:
+    1:
+      - 'I love you too'
+    2:
+      - 'The whole world is my family'
+    3:
+      - 'My name is Robot leena'
+    4:
+      - 'I am a robot. My name is leena. I am younger sister of robot sheena.'
+    5: 
+      - 'I made by quanta robotics.'
+
+
+Gpios:
+  assistant_indicators:
+    - 05
+    - 06
+  pushbutton_trigger:
+    - 22
+  stopbutton_music_AIY_pushbutton:
+    - 23
+
+
+Language:
+  Choice: 'en-US'
+  Language options:
+     - 'en-US' #'English'US
+
+
+Raspberrypi_GPIO_Control:
+  GPIO_Control: 'Enabled'
+
+
+Script:
+  Script_Control: 'Enabled'
+  scriptname:
+    - 'Script test'
+  scriptcommand:
+    - 'echo test >> /home/pi/test.txt'
+
+
+TextToSpeech:
+  Choice: 'gTTS'
+  Voice_Gender: 'Female'
+
+
+Wakewords:
+  Ok_Google: 'Disabled'
+  Custom_Wakeword: 'Enabled'
+  Wakeword_Engine: 'Picovoice'
+  Picovoice_wakeword_models:
+    - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
+    
+
+#Wemo/Emulated Wemo devices
+Wemo:
+  Wemo_Control: 'Disabled'
+  Wemo_Devices:
+    IP_Address:
+      - 'Enter wemo device 1 ip here'
+      - 'Enter wemo device 2 ip here'
+    Device_Names:
+      - 'Enter wemo device 1 name here'
+      - 'Enter wemo device 1 name here'
+
+#Youtube music streaming
+YouTube:
+  YouTube_Control: 'Enabled'
+
+
+
+

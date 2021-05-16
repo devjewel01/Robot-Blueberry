@@ -58,33 +58,42 @@
 <br />
 <br />
 
-## Servo move direcection:
+## Servo Position position block diagram:
+<img width="60%"  src="Store/pic/servo_position.jpg">
+
 ### Servo Initial positions:
  
-|servo no | connection | position   | Limitation | Direction | Description |  
-| ------- | ---------- | ---------- | -----------|  -------  | ---------   |
-|  1      | gpio-40    | 0          |  35 |   
-|  2      | i2c-0      | 90         |  180| 
-|  3      | i2c-1      | 0          | 180 |
-|  4      | i2c-2      |  180       | 180 |
-|  5      | i2c-3      | 0          | 0   |
-|  6      | i2c-4      | 170        |   0 |
-|  7      | i2c-5      | 170        | 180 |
-|  8      | i2c-6      |   0        | 180 |
-|  9      | i2c-7      |  180       | 180 |
-| 10      | i2c-8      |   0        | 180 |
-| 11      | i2c-9      |   60       | 180 |
-| 12      | i2c-10     | 150        | 180 |
-| 13      | i2c-11     |  -        | -   |
-| 14      |  i2c-12    |  -        | -   |
-| 15      |  i2c-13    |  -  | -   |
-| 16      | i2c-14     |  -  | -   |
-| 17      | i2c-15     |  -  | -   |
-| 18      | gpio-19    |  -  | -   |
-| 19      | gpio-21    |  -  | -   |
-| 20      | gpio-22    |  -  | -   |
-| 21      | gpio-23    |  -  | -   |
-| 22      | gpio-24    |  -  | -   |
+|servo no | connection | position   | Limitation | Direction           | Description |  
+| ------- | ---------- | ---------- | -----------|  -------            | ---------   |
+|  1      | gpio-40(21)|    0       |         35 | Front/Back          |
+|  2      | i2c-0      |   90       |        180 | Right/Left          |
+|  3      | i2c-1      |    0       |        180 | Up/Down(Right/Left) |
+|  4      | i2c-2      |  180       |        180 | Up/Down(Right/Left) |
+|  5      | i2c-3      |    0       |          0 | Up/Down(Front/Back) |
+|  6      | i2c-4      |  170       |          0 | Up/Down(Front/Back) |
+|  7      | i2c-5      |  170       |        180 | Right/Left          |
+|  8      | i2c-6      |    0       |        180 | Right/Left          |
+|  9      | i2c-7      |  180       |        180 | Up/Down(Front/Back) |
+| 10      | i2c-8      |    0       |        180 | Up/Down(Front/Back) |
+| 11      | i2c-9      |   60       |        180 | Right/Left          |
+| 12      | i2c-10     |  150       |        180 | Right/Left          |
+| 13      | i2c-11     |    0       |        180 | Open/Close          |
+| 14      | i2c-12     |    0       |        180 | Open/Close          |
+| 15      | i2c-13     |    0       |        180 | Open/Close          |
+| 16      | i2c-14     |    0       |        180 | Open/Close          |
+| 17      | i2c-15     |    0       |        180 | Open/Close          |
+| 18      | gpio-19(10)|    0       |        180 | Open/Close          |
+| 19      | gpio-21(9) |    0       |        180 | Open/Close          |
+| 20      | gpio-22(25)|    0       |        180 | Open/Close          |
+| 21      | gpio-23(11)|    0       |        180 | Open/Close          |
+| 22      | gpio-24(8) |    0       |        180 | Open/Close          |
+
+### DC motor connection:
+
+| Leg      |  Enable Pin | Front Pin  | Back Pin |
+| -------  | ---------   | ---------- | -------- |
+| Right    | 27          |  19        |  16      | 
+| Left     | 22          |  26        |  20      |
 
 ### salute
 
@@ -95,7 +104,7 @@
 | 7	  |    0    |
 | 3   |	  180   |
 | 7	  |    80   |
-| 6	  |    60   |
+| 5	  |    60   |
 
 >normal
 
@@ -103,7 +112,7 @@
 | --- | ------ |
 | 7	  |  180   |
 | 3   |	   0   |
-| 6	  |  170   |
+| 5	  |  170   |
 
 <br/>
 <br/>
@@ -114,20 +123,20 @@
 
 | pin1 | degree	 | pin2	| degree |
 | ---- | ------- | -----| -------|
-| 7 |	0|	10	|180|
-|3	|90	|4	|90 |
-|2	|50 |	5	|150|
-|7 |	50	| 10	|130|
-|6	|90	|9	|90|
+| 7    |  0      |  8	|  180   |
+| 3    | 90	     |      |   90   |
+| 1	   | 50      |	2	|  150   |
+| 7    | 50	     |  8	|  130   |
+| 5	   | 90	     |  6   |   90   |
 
 >stop
 
 | pin1 | degree	 | pin2	| degree |
 | ---- | ------- | -----| -------|
-|7|	180|	10|	0|
-|3	|0|	4|	180|
-|2	|20	|5|	160|
-|6	|170 |	9	|10|
+|7     |  180    |	8   |	  0  |
+|3     |    0    |	4   |	180  |
+|1     |   20	 |  2   |	160  |
+|5     |  170    |	6   |   10   |
 
 <br/>
 <br/>
@@ -138,25 +147,26 @@
 
 | pin |	degree |
 | ----| ----   |
-| 3	| 60 |
-|7	|150|
+| 3	  | 60     |
+| 7	  |140     |
 
 >shake
 
 ```python
 for i in range(0, 10):
     if i&1:
-        pin 7 = 170
+        pin 7 = 155
     else:
-        pin 7 = 120
+        pin 7 = 125
+    sleep(0.02)
 ```
 
 >normal
-
+ 
 | pin |	degree |
 | ----| ----   |
-| 7	| 180 |
-|3	| 0|
+| 7	  | 180    |
+| 3	  |   0    |
 
 <br/>
 <br/>
@@ -167,18 +177,18 @@ for i in range(0, 10):
 
 | pin1 | degree	 | pin2	| degree |
 | ---- | ------- | -----| -------|
-|10|	180|	7|	0|
-|5	|40	|2	|140|
-|4	|90|	3|	90|
-|10	|130|	7	|70|
+|8  | 180  |   7 |	0  |
+|2	|  40  |   1 | 140 |
+|4	|  90  |   3 |	90 |
+|8	| 130  |   7 |  70 |
 
 >stop
 
 | pin1 | degree	 | pin2	| degree |
 | ---- | ------- | -----| -------|
-|10	| 0 |	7 |	180 |
-|4 |	180|	3|	0|
-|5 |	160 |	2 |	20|
+|8  |   0  |	7 |	180 |
+|4  | 180  |	3 |	0   |
+|2  | 160  |	1 |	20  |
 
 
 

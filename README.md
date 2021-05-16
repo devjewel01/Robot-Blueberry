@@ -58,7 +58,7 @@
 <br />
 <br />
 
-## Servo Position position block diagram:
+## Servo Motor Position Block Diagram:
 <img width="60%"  src="Store/pic/servo_position.jpg">
 
 ### Servo Initial positions:
@@ -197,7 +197,4 @@ for i in range(0, 10):
 <br/>
 
 
-
-### Contributors :pray: :dizzy:
-![105](https://contributors-img.web.app/image?repo=DevJewel143/Robot-Leena)
 

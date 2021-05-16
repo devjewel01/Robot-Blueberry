@@ -3,15 +3,7 @@ import RPi.GPIO as GPIO
 from adafruit_servokit import ServoKit
 
 
-'''GPIO.setmode(GPIO.BCM)
-GPIO.setup(11,GPIO.OUT)
-servo1=GPIO.PWM(11,50)
-servo1.start(2)'''
-
 h = ServoKit(channels=16)
-
-#servo1.ChangeDutyCycle(12)
-#kit.servo[0].angle 
 
 init = [0,90,20,0,180,160,170,180,60,0,0,150]
 limitLo = [0,0,20,0,0,40,0,0,60,0,0,30]

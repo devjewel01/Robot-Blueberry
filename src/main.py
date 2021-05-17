@@ -56,7 +56,7 @@ from google.assistant.library.file_helpers import existing_file
 from google.assistant.library.device_helpers import register_device
 if GPIO!=None:
     from indicator import assistantindicator
-    #from indicator import stoppushbutton
+    from indicator import stoppushbutton
     GPIOcontrol=True
 else:
     GPIOcontrol=False
@@ -65,7 +65,6 @@ try:
     FileNotFoundError
 except NameError:
     FileNotFoundError = IOError
-
 
 WARNING_NOT_REGISTERED = ""
 
@@ -216,7 +215,7 @@ class Myassistant():
 
 
         if event.type == EventType.ON_CONVERSATION_TURN_STARTED:
-            subprocess.Popen(["aplay", "{}/sample-audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.Popen(["aplay", "{}/audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             self.can_start_conversation = False
             if GPIOcontrol:
                 assistantindicator('listening')
@@ -350,7 +349,7 @@ class Myassistant():
 
     def voicenote_recording(self):
         recordfilepath='/tmp/audiorecord.wav'
-        subprocess.Popen(["aplay", "{}/sample-audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.Popen(["aplay", "{}/audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         while not record_to_file(recordfilepath):
             time.sleep(.1)
         voicenote(recordfilepath)
@@ -452,7 +451,7 @@ class Myassistant():
         device_model_id = args.device_model_id or device_model_id
         with Assistant(credentials, device_model_id) as assistant:
             self.assistant = assistant
-            subprocess.Popen(["aplay", "/home/pi/Robot-Leena/sample-audio-files/welcome leena.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.Popen(["aplay", "/home/pi/Robot-Leena/audio-files/welcome leena.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             events = assistant.start()
             device_id = assistant.device_id
             print('device_model_id:', device_model_id)

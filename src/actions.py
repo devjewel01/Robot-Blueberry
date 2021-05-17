@@ -31,8 +31,6 @@ with open('{}/src/config.yaml'.format(ROOT_PATH),'r', encoding='utf8') as conf:
     configuration = yaml.load(conf, Loader=yaml.FullLoader)
 
 
-TTSChoice='GTTS'
-
 
 if GPIO!=None:
     GPIO.setmode(GPIO.BCM)
@@ -47,30 +45,17 @@ scriptcommand=configuration['Script']['scriptcommand']
 ##Speech and translator declarations
 translator = Translator()
 femalettsfilename="/tmp/female-say.mp3"
-malettsfilename="/tmp/male-say.wav"
-language=configuration['Language']['Choice']
+language='en-US'
 translanguage=language.split('-')[0]
-gender=''
-if configuration['TextToSpeech']['Voice_Gender']=='Male':
-    gender='Male'
-elif configuration['TextToSpeech']['Voice_Gender']=='Female':
-    gender='Female'
-else:
-    gender='Female'
+gender='Female'
 
 
 #gTTS
-def gttssay(phrase,saylang,specgender):
+def gttssay(phrase,saylang):
     tts = gTTS(text=phrase, lang=saylang)
     tts.save(femalettsfilename)
-    if specgender=='Male':
-        os.system('sox ' + femalettsfilename + ' ' + malettsfilename + ' pitch -450')
-        os.remove(femalettsfilename)
-        os.system('aplay ' + malettsfilename)
-        os.remove(malettsfilename)
-    elif specgender=='Female':
-        os.system("mpg123 "+femalettsfilename)
-        os.remove(femalettsfilename)
+    os.system("mpg123 "+femalettsfilename)
+    os.remove(femalettsfilename)
 
 #Word translator
 def trans(words,destlang,srclang):
@@ -84,9 +69,8 @@ def trans(words,destlang,srclang):
 #Text to speech converter with translation
 def say(words,sourcelang=None,destinationlang=None):
     if sourcelang!=None and destinationlang!=None:
-        if TTSChoice=='GTTS':
-            sayword=trans(words,destinationlang,sourcelang)
-            gttssay(sayword,translanguage,gender)
+        sayword=trans(words,destinationlang,sourcelang)
+        gttssay(sayword,translanguage)
     else:
         if sourcelang==None:
             sourcelanguage='en'
@@ -96,8 +80,7 @@ def say(words,sourcelang=None,destinationlang=None):
             sayword=trans(words,translanguage,sourcelanguage)
         else:
             sayword=words
-        if TTSChoice=='GTTS':
-            gttssay(sayword,translanguage,gender)
+        gttssay(sayword,translanguage,gender)
 
 
 #Run scripts
@@ -119,22 +102,57 @@ def Action(phrase):
         time.sleep(10)
         os.system("sudo shutdown -h now")
     elif 'hands up' in phrase:
+        say('my hands up')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hands_up.py")
+    elif 'hand up' in phrase:
+        say('my hands up')
         os.system("python3 /home/pi/Robot-Leena/robot-control/hands_up.py")
     elif 'hug me'  in phrase:
+        say('come on and hug me')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
+    elif 'hath me'  in phrase:
+        say('come on and hug me')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
+    elif 'hackme'  in phrase:
+        say('come on and hug me')
         os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
     elif 'salute' in phrase:
-    	os.system("python3 /home/pi/Robot-Leena/robot-control/salute.py")
+        say('please take my salute')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/salute.py")
     elif 'hand shake' in phrase:
-    	os.system("python3 /home/pi/Robot-Leena/robot-control/hand_shake.py")
+        say('hello I am leena')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hand_shake.py")
+    elif 'handshake' in phrase:
+        say('hello I am leena')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/hand_shake.py")
     elif 'move your hand' in phrase:
+        say('see my hand movement')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+    elif 'movie hand' in phrase:
+        say('see my hand movement')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+    elif 'move hand' in phrase:
+        say('see my hand movement')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+    elif 'mop hand' in phrase:
+        say('see my hand movement')
         os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
     elif 'move your right hand' in phrase:
+        say('my right hand')
         os.system("python3 /home/pi/Robot-Leena/robot-control/rightHand.py")
     elif 'move your left hand' in phrase:
+        say('my left hand')
         os.system("python3 /home/pi/Robot-Leena/robot-control/leftHand.py")
     elif 'move your head' in phrase:
+        say('I learn to move my head')
         os.system("python3 /home/pi/Robot-Leena/robot-control/yes.py")
         os.system("python3 /home/pi/Robot-Leena/robot-control/no.py")
+    elif 'no' in phrase:
+        say('I do not agree with you')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/no.py")
+    elif 'yes' in phrase:
+        say('I am agree with you')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/yes.py")
     elif 'left right' in phrase:
         os.system("python3 /home/pi/Robot-Leena/robot-control/left-right.py")
     elif 'tata' in phrase:
@@ -150,14 +168,22 @@ def Action(phrase):
     elif 'touch your eye' in phrase:
         os.system("python3 /home/pi/Robot-Leena/robot-control/touchEye.py")
     elif 'go forward' in phrase:
+        say('go and go')
         os.system("python3 /home/pi/Robot-Leena/robot-control/goForward.py")
     elif 'go back'  in phrase:
-        print('go back')
+        say('I do not like to go back')
         os.system("python3 /home/pi/Robot-Leena/robot-control/goBack.py")
     elif 'turn left' in phrase:
-        print('turn left')
+        say('turn left my face')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/turnLeft.py")
+    elif 'tan lab' in phrase:
+        say('turn left my face')
         os.system("python3 /home/pi/Robot-Leena/robot-control/turnLeft.py")
     elif 'turn right' in phrase:
+        say('turn right my face')
+        os.system("python3 /home/pi/Robot-Leena/robot-control/turnRight.py")
+    elif 'turn write' in phrase:
+        say('turn right my face')
         os.system("python3 /home/pi/Robot-Leena/robot-control/turnRight.py")
     else:
         say('please say the command again')

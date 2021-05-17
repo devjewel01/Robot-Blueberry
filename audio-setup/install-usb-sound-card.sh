@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-# Configure Raspberry Pi audio for USB DAC.
 
 set -o errexit
 
@@ -26,8 +24,8 @@ if [ -f $audioconfig ] ; then
     sudo rm $audioconfig
 fi
 
-echo 'USB-DAC' >> $audioconfig
+echo 'usb-sound-card' >> $audioconfig
 
-sudo cp scripts/asound.conf "$global_asoundrc"
-sudo cp scripts/.asoundrc "$asoundrc"
-echo "Installing USB DAC config"
+sudo cp audio-setup/asound.conf "$global_asoundrc"
+sudo cp audio-setup/.asoundrc "$asoundrc"
+echo "Installing USB sound card configuration"

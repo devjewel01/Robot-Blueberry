@@ -19,9 +19,6 @@ except ImportError:
     import Queue as Queue
 
 
-audiosetup='GEN'
-
-
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -29,34 +26,31 @@ GPIO.setwarnings(False)
 listeningindicator=configuration['Gpios']['assistant_indicators'][0]
 speakingindicator=configuration['Gpios']['assistant_indicators'][1]
 
+#Stopbutton
+stoppushbutton=configuration['Gpios']['stop_pushbutton'][0]
+GPIO.setup(stoppushbutton, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.add_event_detect(stoppushbutton,GPIO.FALLING)
 
-if (audiosetup=='GEN'):
-    GPIO.setup(listeningindicator, GPIO.OUT)
-    GPIO.setup(speakingindicator, GPIO.OUT)
-    GPIO.output(listeningindicator, GPIO.LOW)
-    GPIO.output(speakingindicator, GPIO.LOW)
-    print('Initializing GPIOs '+str(listeningindicator)+' and '+str(speakingindicator)+' for assistant activity indication')
-
+GPIO.setup(listeningindicator, GPIO.OUT)
+GPIO.setup(speakingindicator, GPIO.OUT)
+GPIO.output(listeningindicator, GPIO.LOW)
+GPIO.output(speakingindicator, GPIO.LOW)
 
 def assistantindicator(activity):
     activity=activity.lower()
     if activity=='listening':
-        if (audiosetup=='GEN'):
-            GPIO.output(speakingindicator,GPIO.LOW)
-            GPIO.output(listeningindicator,GPIO.HIGH)
+        GPIO.output(speakingindicator,GPIO.LOW)
+        GPIO.output(listeningindicator,GPIO.HIGH)
        
     elif activity=='speaking':
-        if (audiosetup=='GEN'):
-            GPIO.output(speakingindicator,GPIO.HIGH)
-            GPIO.output(listeningindicator,GPIO.LOW)
+        GPIO.output(speakingindicator,GPIO.HIGH)
+        GPIO.output(listeningindicator,GPIO.LOW)
         
     elif (activity=='off' or activity=='unmute'):
-        if (audiosetup=='GEN'):
-            GPIO.output(speakingindicator,GPIO.LOW)
-            GPIO.output(listeningindicator,GPIO.LOW)
+        GPIO.output(speakingindicator,GPIO.LOW)
+        GPIO.output(listeningindicator,GPIO.LOW)
         
     elif (activity=='on' or activity=='mute'):
-        if (audiosetup=='GEN'):
-            GPIO.output(speakingindicator,GPIO.HIGH)
-            GPIO.output(listeningindicator,GPIO.HIGH)
+        GPIO.output(speakingindicator,GPIO.HIGH)
+        GPIO.output(listeningindicator,GPIO.HIGH)
         

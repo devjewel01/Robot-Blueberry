@@ -12,6 +12,39 @@ Conversation:
       - 'who are you'
     5:
       - 'who made you'
+      - 'who is your creator'
+      - 'who create you'
+    6:
+      - 'you listening me'
+      - 'you are listening me'
+      - 'are you listening me'
+    7:
+      - 'how are you'
+      - 'how about you'
+    8:
+      - 'what are you doing'
+    9:
+      - 'are you google assistant'
+      - 'are you google'
+    10:
+      - 'move your hand'
+      - 'hand shake'
+      - 'hands up'
+      - 'go forward'
+      - 'turn left'
+      - 'salute'
+      - 'go back'
+    11:
+      - 'who is sanjit mondal'
+      - 'who is your mechanical designer'
+      - 'who is your circuit designer'
+    12:
+      - 'who is your programmer'
+      - 'who is your software devoloper'
+    13:
+      - 'when you listen'
+      - 'when you are listen'
+
   answer:
     1:
       - 'I love you too'
@@ -22,8 +55,25 @@ Conversation:
     4:
       - 'I am a robot. My name is leena. I am younger sister of robot sheena.'
     5: 
-      - 'I made by quanta robotics.'
-
+      - 'I made by quanta robotics team'
+    6:
+      - 'Yes, my full concerntration on you'
+    7:
+      - 'I am fine. I hope you are also fine'
+    8:
+      - 'I am talk to you'
+      - 'I am listening you'
+    9:
+      - 'No, I am robot leena, are you dont see me?'
+    10:
+      - 'Please say the command with robot.'
+    11:
+      - 'Sanjit mondal is my mechanicle and circuit designer and he is the quanta robotics team leader'
+    12:
+      - 'Jewel nath and mestu paul are my programmer.'
+      - 'Jewel nath and mestu paul are my software devoloper'
+    13:
+      - 'When you tell me hey leena than I activate and talk to you'
 
 Gpios:
   assistant_indicators:
@@ -31,14 +81,9 @@ Gpios:
     - 06
   pushbutton_trigger:
     - 22
-  stopbutton_music_AIY_pushbutton:
+  stop_pushbutton:
     - 23
 
-
-Language:
-  Choice: 'en-US'
-  Language options:
-     - 'en-US' #'English'US
 
 
 Raspberrypi_GPIO_Control:
@@ -53,10 +98,6 @@ Script:
     - 'echo test >> /home/pi/test.txt'
 
 
-TextToSpeech:
-  Choice: 'gTTS'
-  Voice_Gender: 'Female'
-
 
 Wakewords:
   Ok_Google: 'Disabled'
@@ -65,17 +106,6 @@ Wakewords:
   Picovoice_wakeword_models:
     - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
     
-
-#Wemo/Emulated Wemo devices
-Wemo:
-  Wemo_Control: 'Disabled'
-  Wemo_Devices:
-    IP_Address:
-      - 'Enter wemo device 1 ip here'
-      - 'Enter wemo device 2 ip here'
-    Device_Names:
-      - 'Enter wemo device 1 name here'
-      - 'Enter wemo device 1 name here'
 
 #Youtube music streaming
 YouTube:

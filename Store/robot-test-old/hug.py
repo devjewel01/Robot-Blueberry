@@ -30,16 +30,16 @@ def changeDeg(pin,newDegree):
 for i in range(0,12):
     h.servo[i].angle=init[i]
 time.sleep(1)
-#start
 
-changeDeg([7,10],[0,180])
+#start
+changeDeg([7,8],[0,180])
 changeDeg([3,4],[90,90])
-changeDeg([2,5],[50,150])
-changeDeg([7,10],[50,130])
-changeDeg([6,9],[90,90])
+changeDeg([1,2],[50,150])
+changeDeg([7,8],[50,130])
+changeDeg([5,6],[90,90])
 time.sleep(2)
 #stop
-changeDeg([7,10],[180,0])
-changeDeg([3,4],[0,180])
-changeDeg([2,5],[20,160])
-changeDeg([6,9],[170,10])
+changeDeg([7,8],[180,0])
+changeDeg([3,4],[0,170])
+changeDeg([5,6],[170,0])
+changeDeg([1,2],[0,180])

@@ -129,54 +129,6 @@ fi
 
 echo ""
 cd /home/${USER}/
-
-#Copy snowboy wrappers for Stretch or Buster and create new ones for other OSes.
-echo "Copying Snowboy files to Robot directory"
-echo ""
-if [[ $osversion = "Raspbian Buster" ]]; then
-  sudo \cp -f ${GIT_DIR}/src/resources/Buster-wrapper/_snowboydetect.so ${GIT_DIR}/src/_snowboydetect.so
-  sudo \cp -f ${GIT_DIR}/src/resources/Buster-wrapper/snowboydetect.py ${GIT_DIR}/src/snowboydetect.py
-  echo ""
-  cd /home/${USER}/
-elif [[ $osversion = "Raspbian Stretch" ]]; then
-  sudo \cp -f ${GIT_DIR}/src/resources/Stretch-wrapper/_snowboydetect.so ${GIT_DIR}/src/_snowboydetect.so
-  sudo \cp -f ${GIT_DIR}/src/resources/Stretch-wrapper/snowboydetect.py ${GIT_DIR}/src/snowboydetect.py
-fi
-
-if [[ $osversion != "Raspbian Stretch" ]] && [[ $osversion != "Raspbian Buster" ]]; then
-  echo "Snowboy wrappers provied with the project are for Raspberry Pi boards running Raspbian Stretch or Buster. Custom snowboy wrappers need to be compiled for your setup. Grab a coffee or a beer this will take quite a while."
-  echo ""
-  echo "Installing Swig"
-  echo ""
-  if [ ! -d /home/${USER}/programs/libraries/swig/ ]; then
-    sudo mkdir -p programs/libraries/ && cd programs/libraries
-    sudo git clone https://github.com/swig/swig.git
-  fi
-  cd /home/${USER}/programs/libraries/swig/
-  sudo ./autogen.sh
-  sudo ./configure
-  sudo make
-  sudo make install
-  echo ""
-  echo "Compiling custom Snowboy Python3 wrapper"
-  echo ""
-  cd ~/programs
-  if [ ! -d /home/${USER}/programs/snowboy/ ]; then
-    sudo git clone https://github.com/Kitt-AI/snowboy.git
-  fi
-  cd /home/${USER}/programs/snowboy/swig/Python3
-  sudo make
-
-  if [ -e /home/${USER}/programs/snowboy/swig/Python3/_snowboydetect.so ]; then
-    echo "Copying Snowboy files to Robot directory"
-    sudo \cp -f ./_snowboydetect.so ${GIT_DIR}/src/_snowboydetect.so
-    sudo \cp -f ./snowboydetect.py ${GIT_DIR}/src/snowboydetect.py
-  else
-    echo "Something has gone wrong while compiling the wrappers. Try again or go through the errors above"
-  fi
-fi
-
-cd /home/${USER}/
 python3 -m venv env
 env/bin/python -m pip install --upgrade pip setuptools wheel
 source env/bin/activate
@@ -234,7 +186,7 @@ echo ""
 echo "Your Model-Id: $modelid Project-Id: $projid used for this project" >> /home/${USER}/modelid.txt
 echo ""
 echo ""
-echo "Finished installing Google Assistant......."
+echo "Finished installing Robot Leena......."
 echo ""
 echo ""
 echo "Please reboot........"

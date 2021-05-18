@@ -3,29 +3,25 @@
 from __future__ import print_function
 import faulthandler
 faulthandler.enable()
-
 try:
     import RPi.GPIO as GPIO
 except Exception as e:
     GPIO = None
-    
 from google.cloud import speech
 from google.cloud.speech import enums
 from google.cloud.speech import types
-from actions import say
-from actions import trans
-from actions import Action
-from actions import script
 
+from actions import say
+from actions import Action
 from actions import configuration
+#from actions import custom_action_keyword
 from threading import Thread
 from pathlib import Path
+
 
 from actions import gender
 from actions import translanguage
 from actions import language
-from audiorecorder import record_to_file
-
 import argparse
 import json
 import os.path
@@ -40,10 +36,12 @@ import time
 import random
 
 
+#Picovoice
 import numpy as np
 import pvporcupine
 import pyaudio
 import soundfile
+#--------------
 
 import sys
 import signal
@@ -56,7 +54,7 @@ from google.assistant.library.file_helpers import existing_file
 from google.assistant.library.device_helpers import register_device
 if GPIO!=None:
     from indicator import assistantindicator
-    #from indicator import stoppushbutton
+    from indicator import stoppushbutton
     GPIOcontrol=True
 else:
     GPIOcontrol=False
@@ -68,7 +66,6 @@ except NameError:
 
 
 WARNING_NOT_REGISTERED = ""
-
 
 if os.path.isfile('/tmp/robot.log'):
     os.system('sudo rm /tmp/robot.log')
@@ -86,7 +83,9 @@ USER_PATH = os.path.realpath(os.path.join(__file__, '..', '..','..'))
 
 
 
+
 mutestopbutton=True
+
 
 if configuration['Wakewords']['Custom_Wakeword']=='Enabled':
     custom_wakeword=True
@@ -96,17 +95,18 @@ else:
 
 picovoice_models=configuration['Wakewords']['Picovoice_wakeword_models']
 
+
 if configuration['Wakewords']['Wakeword_Engine']=='Picovoice':
     wakeword_length=len(picovoice_models)
 
 
+#Custom Conversation
 numques=len(configuration['Conversation']['question'])
 numans=len(configuration['Conversation']['answer'])
 
 class Myassistant():
 
     def __init__(self):
-        self.interrupted=False
         self.can_start_conversation=False
         self.assistant=None
         self._library_path = pvporcupine.LIBRARY_PATH
@@ -114,27 +114,13 @@ class Myassistant():
         self._keyword_paths = picovoice_models
         self._input_device_index = None
         self._sensitivities = [0.5]*wakeword_length
-
         self.mutestatus=False
-        self.interpreter=False
-        self.interpconvcounter=0
-        self.interpcloudlang1=language
-        self.interpttslang1=translanguage
-        self.interpcloudlang2=''
-        self.interpttslang2=''
         self.singleresposne=False
         self.singledetectedresponse=''
-
         if configuration['Wakewords']['Wakeword_Engine']=='Picovoice':
             self.t1 = Thread(target=self.picovoice_run)
         if GPIOcontrol:
             self.t2 = Thread(target=self.pushbutton)
-
-    def signal_handler(self,signal, frame):
-        self.interrupted = True
-
-    def interrupt_callback(self,):
-        return self.interrupted
 
     def buttonsinglepress(self):
         if os.path.isfile("{}/.mute".format(USER_PATH)):
@@ -145,20 +131,19 @@ class Myassistant():
                 print("Mic is open, but Ok-Google is disabled")
             else:
                 self.assistant.set_mic_mute(False)
-            # if custom_wakeword:
-            #     self.t1.start()
                 print("Turning on the microphone")
         else:
             open('{}/.mute'.format(USER_PATH), 'a').close()
             assistantindicator('mute')
             self.assistant.set_mic_mute(True)
-            # if custom_wakeword:
-            #     self.thread_end(t1)
             print("Turning off the microphone")
 
     def buttondoublepress(self):
         print('Stopped')
         stop()
+
+    def buttontriplepress(self):
+        print("Create your own action for button triple press")
 
     def pushbutton(self):
         if GPIOcontrol:
@@ -181,6 +166,11 @@ class Myassistant():
                         self.buttondoublepress()
                         GPIO.remove_event_detect(stoppushbutton)
                         GPIO.add_event_detect(stoppushbutton,GPIO.FALLING)
+                    elif count == 4:
+                        self.buttontriplepress()
+                        GPIO.remove_event_detect(stoppushbutton)
+                        GPIO.add_event_detect(stoppushbutton,GPIO.FALLING)
+
 
     def process_device_actions(self,event, device_id):
         if 'inputs' in event.args:
@@ -216,8 +206,9 @@ class Myassistant():
 
 
         if event.type == EventType.ON_CONVERSATION_TURN_STARTED:
-            subprocess.Popen(["aplay", "{}/sample-audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.Popen(["aplay", "{}/audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             self.can_start_conversation = False
+
             if GPIOcontrol:
                 assistantindicator('listening')
 
@@ -231,7 +222,6 @@ class Myassistant():
             if os.path.isfile("{}/.mute".format(USER_PATH)):
                 if GPIOcontrol:
                     assistantindicator('mute')
-
 
         if (event.type == EventType.ON_RESPONDING_STARTED and event.args and not event.args['is_error_response']):
             if GPIOcontrol:
@@ -254,7 +244,6 @@ class Myassistant():
         if event.type == EventType.ON_RENDER_RESPONSE:
             if GPIOcontrol:
                 assistantindicator('off')
-            
 
         if (event.type == EventType.ON_CONVERSATION_TURN_FINISHED and
                 event.args and not event.args['with_follow_on_turn']):
@@ -266,7 +255,6 @@ class Myassistant():
             if os.path.isfile("{}/.mute".format(USER_PATH)):
                 if GPIOcontrol:
                     assistantindicator('mute')
-
 
         if event.type == EventType.ON_DEVICE_ACTION:
             for command, params in event.actions:
@@ -300,11 +288,6 @@ class Myassistant():
             if not self.mutestatus:
                 self.assistant.start_conversation()
             print('Assistant is listening....')
-
-    def start_detector(self):
-        self.detector.start(detected_callback=self.callbacks,
-            interrupt_check=self.interrupt_callback,
-            sleep_time=0.03)
 
     def picovoice_run(self):
         keywords = list()
@@ -348,12 +331,6 @@ class Myassistant():
             if pa is not None:
                 pa.terminate()
 
-    def voicenote_recording(self):
-        recordfilepath='/tmp/audiorecord.wav'
-        subprocess.Popen(["aplay", "{}/sample-audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        while not record_to_file(recordfilepath):
-            time.sleep(.1)
-        voicenote(recordfilepath)
 
     def single_user_response(self,prompt):
         self.singledetectedresponse=''
@@ -370,8 +347,6 @@ class Myassistant():
             if 'script'.lower() in str(usrcmd).lower():
                 script(str(usrcmd).lower())
 
-        
-                    
         if configuration['Conversation']['Conversation_Control']=='Enabled':
             for i in range(1,numques+1):
                 try:
@@ -382,16 +357,14 @@ class Myassistant():
                         break
                 except Keyerror:
                     say('Please check if the number of questions matches the number of answers')
-                    
-                    
 
         if configuration['Raspberrypi_GPIO_Control']['GPIO_Control']=='Enabled':
             if 'robot'.lower() in str(usrcmd).lower():
                 self.assistant.stop_conversation()
-                command = str(usrcmd).lower()
-                command = command.replace('robot', '')
-                Action(command)
+                Action(str(usrcmd).lower())
 
+
+        
 
 
     def main(self):
@@ -452,13 +425,15 @@ class Myassistant():
         device_model_id = args.device_model_id or device_model_id
         with Assistant(credentials, device_model_id) as assistant:
             self.assistant = assistant
-            subprocess.Popen(["aplay", "/home/pi/Robot-Leena/sample-audio-files/welcome leena.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if gender=='Male':
+                subprocess.Popen(["aplay", "{}/audio-files/Startup-Male.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            else:
+                subprocess.Popen(["aplay", "/home/pi/Robot-Leena/audio-files/welcome leena.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             events = assistant.start()
             device_id = assistant.device_id
             print('device_model_id:', device_model_id)
             print('device_id:', device_id + '\n')
 
-            # Re-register if "device_id" is different from the last "device_id":
             if should_register or (device_id != last_device_id):
                 if args.project_id:
                     register_device(args.project_id, credentials,
@@ -487,4 +462,5 @@ if __name__ == '__main__':
         Myassistant().main()
     except Exception as error:
         logging.exception(error)
+
 

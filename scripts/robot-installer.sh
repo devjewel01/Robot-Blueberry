@@ -1,10 +1,12 @@
 #!/bin/bash
 
+
 set -o errexit
 
 scripts_dir="$(dirname "${BASH_SOURCE[0]}")"
 GIT_DIR="$(realpath $(dirname ${BASH_SOURCE[0]})/..)"
 
+# make sure we're running as the owner of the checkout directory
 RUN_AS="$(ls -ld "$scripts_dir" | awk 'NR==1 {print $3}')"
 if [ "$USER" != "$RUN_AS" ]
 then
@@ -25,7 +27,9 @@ sudo apt-get update -y
 sed 's/#.*//' ${GIT_DIR}/Requirements/robot-system-requirements.txt | xargs sudo apt-get install -y
 
 
-
+#Check OS Version
+echo ""
+echo "Checking OS Compatability"
 echo ""
 if [[ $(cat /etc/os-release|grep "raspbian") ]]; then
   if [[ $(cat /etc/os-release|grep "stretch") ]]; then
@@ -97,7 +101,7 @@ elif [[ $(cat /etc/os-release|grep "ubuntu") ]]; then
   fi
 fi
 
-
+#Check CPU architecture
 if [[ $(uname -m|grep "armv7") ]] || [[ $(uname -m|grep "x86_64") ]] || [[ $(uname -m|grep "armv8") ]]; then
 	devmodel="armv7"
   echo ""
@@ -110,7 +114,7 @@ else
   echo ""
 fi
 
-
+#Check Board Model
 if [[ $(cat /proc/cpuinfo|grep "BCM") ]]; then
 	board="Raspberry"
   echo ""
@@ -124,12 +128,13 @@ else
 fi
 
 
+echo ""
 cd /home/${USER}/
 python3 -m venv env
 env/bin/python -m pip install --upgrade pip setuptools wheel
 source env/bin/activate
 
-pip install -r ${GIT_DIR}/Requirements/robotS-pip-requirements.txt
+pip install -r ${GIT_DIR}/Requirements/robot-pip-requirements.txt
 
 if [[ $board = "Raspberry" ]] && [[ $osversion != "OSMC Stretch" ]];then
 	pip install RPi.GPIO>=0.6.3
@@ -163,6 +168,7 @@ else
     echo ""
     echo ""
     echo "Changing particulars in service files for Ok-Google hotword......."
+    sed -i '/pushbutton.py/d' ${GIT_DIR}/systemd/robot.service
     sed -i 's/created-project-id/'$projid'/g' ${GIT_DIR}/systemd/robot.service
     sed -i 's/saved-model-id/'$modelid'/g' ${GIT_DIR}/systemd/robot.service
   else
@@ -181,7 +187,7 @@ echo ""
 echo "Your Model-Id: $modelid Project-Id: $projid used for this project" >> /home/${USER}/modelid.txt
 echo ""
 echo ""
-echo "Finished installing Robot......."
+echo "Finished installing Google Assistant......."
 echo ""
 echo ""
 echo "Please reboot........"

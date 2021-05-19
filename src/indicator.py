@@ -1,23 +1,8 @@
 #!/usr/bin/env python
 
-try:
-    import RPi.GPIO as GPIO
-except Exception as e:
-    GPIO = None
-import time
-import os
-from actions import configuration
-import time
-import threading
-import numpy
-import usb.core
-import usb.util
-from gpiozero import LED
-try:
-    import queue as Queue
-except ImportError:
-    import Queue as Queue
 
+import RPi.GPIO as GPIO
+from actions import configuration
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)

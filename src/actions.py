@@ -1,13 +1,8 @@
 #!/usr/bin/env python
 
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-from oauth2client.tools import argparser
-
 from googletrans import Translator
 from google.cloud import texttospeech
 from gtts import gTTS
-import requests
 import os
 import os.path
 try:
@@ -15,14 +10,6 @@ try:
 except Exception as e:
     GPIO = None
 import time
-import re
-import subprocess
-import aftership
-import feedparser
-import json
-import urllib.request
-import pafy
-import pprint
 import yaml
 
 ROOT_PATH = os.path.realpath(os.path.join(__file__, '..', '..'))

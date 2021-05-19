@@ -76,8 +76,6 @@ Conversation:
 
 
 Gpios:
-  AIY_indicator:
-    - 25
   assistant_indicators:
     - 05
     - 06
@@ -131,6 +129,4 @@ Wakewords:
   Picovoice_wakeword_models:
     - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
     
-YouTube:
-  YouTube_Control: 'Enabled'
 

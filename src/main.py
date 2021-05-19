@@ -1,52 +1,29 @@
 #!/usr/bin/env python
 
-from __future__ import print_function
-import faulthandler
-faulthandler.enable()
 try:
     import RPi.GPIO as GPIO
 except Exception as e:
     GPIO = None
-from google.cloud import speech
-from google.cloud.speech import enums
-from google.cloud.speech import types
+
 
 from actions import say
 from actions import Action
 from actions import configuration
-#from actions import custom_action_keyword
 from threading import Thread
-from pathlib import Path
-
-
 from actions import gender
-from actions import translanguage
-from actions import language
 import argparse
 import json
 import os.path
-import pathlib2 as pathlib
 import os
 import struct
 import subprocess
-import re
-import psutil
 import logging
 import time
 import random
 
-
-#Picovoice
-import numpy as np
 import pvporcupine
 import pyaudio
-import soundfile
-#--------------
 
-import sys
-import signal
-import requests
-import io
 import google.oauth2.credentials
 from google.assistant.library import Assistant
 from google.assistant.library.event import EventType
@@ -100,7 +77,6 @@ if configuration['Wakewords']['Wakeword_Engine']=='Picovoice':
     wakeword_length=len(picovoice_models)
 
 
-#Custom Conversation
 numques=len(configuration['Conversation']['question'])
 numans=len(configuration['Conversation']['answer'])
 

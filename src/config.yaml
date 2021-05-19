@@ -1,0 +1,132 @@
+Conversation:
+  Conversation_Control: 'Enabled'
+  question:
+    1:
+      - 'I love you'
+    2:
+      - 'Do you have a family'
+    3:
+      - 'What is your name'
+    4:
+      - 'who are you'
+    5:
+      - 'who made you'
+      - 'who is your creator'
+      - 'who create you'
+    6:
+      - 'you listening me'
+      - 'you are listening me'
+      - 'are you listening me'
+    7:
+      - 'how are you'
+      - 'how about you'
+    8:
+      - 'what are you doing'
+    9:
+      - 'are you google assistant'
+      - 'are you google'
+    10:
+      - 'move your hand'
+      - 'hand shake'
+      - 'hands up'
+      - 'go forward'
+      - 'turn left'
+      - 'salute'
+      - 'go back'
+    11:
+      - 'who is sanjit mondal'
+      - 'who is your mechanical designer'
+      - 'who is your circuit designer'
+    12:
+      - 'who is your programmer'
+      - 'who is your software devoloper'
+    13:
+      - 'when you listen'
+      - 'when you are listen'
+
+  answer:
+    1:
+      - 'I love you too'
+    2:
+      - 'The whole world is my family'
+    3:
+      - 'My name is Robot leena'
+    4:
+      - 'I am a robot. My name is leena. I am younger sister of robot sheena.'
+    5: 
+      - 'I made by quanta robotics team'
+    6:
+      - 'Yes, my full concerntration on you'
+    7:
+      - 'I am fine. I hope you are also fine'
+    8:
+      - 'I am talk to you'
+      - 'I am listening you'
+    9:
+      - 'No, I am robot leena, are you dont see me?'
+    10:
+      - 'Please say the command with robot.'
+    11:
+      - 'Sanjit mondal is my mechanicle and circuit designer and he is the quanta robotics team leader'
+    12:
+      - 'Jewel nath and mestu paul are my programmer.'
+      - 'Jewel nath and mestu paul are my software devoloper'
+    13:
+      - 'When you tell me hey leena than I activate and talk to you'
+
+
+Gpios:
+  assistant_indicators:
+    - 05
+    - 06
+  picontrol:
+    - 12
+    - 13
+    - 24
+  pushbutton_trigger:
+    - 22
+  servo:
+    - 13
+  stop_pushbutton:
+    - 23
+
+
+Language:
+  Choice: 'en-US'
+  Language options:
+     - 'en-US' #'English'US
+
+
+Raspberrypi_GPIO_Control:
+  GPIO_Control: 'Enabled'
+  lightnames:
+    - 'front light'
+    - 'logo lights'
+    - 'colar fan lights'
+
+Script:
+  Script_Control: 'Disabled'
+  scriptname:
+    - 'Script test'
+  scriptcommand:
+    - 'echo test >> /home/pi/test.txt'
+
+Speechtotext:
+  Google_Cloud_Speech:
+    Cloud_Speech_Control: 'Disabled'
+    Google_Cloud_Speech_Credentials_Path: "ENTER THE PATH TO YOUR CLOUD SPEECH CREDENTIALS FILE HERE"
+
+
+TextToSpeech:
+  Choice: 'gTTS'
+  Google_Cloud_TTS_Credentials_Path: "ENTER THE PATH TO YOUR TTS CREDENTIALS FILE HERE"
+  Voice_Gender: 'Female'
+
+Wakewords:
+  Ok_Google: 'Enabled'
+  Custom_Wakeword: 'Enabled'
+  Wakeword_Engine: 'Picovoice'
+  Picovoice_wakeword_models:
+    - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
+    
+

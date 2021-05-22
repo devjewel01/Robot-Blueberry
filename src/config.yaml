@@ -50,9 +50,9 @@ Conversation:
     2:
       - 'The whole world is my family'
     3:
-      - 'My name is Robot leena'
+      - 'My name is Robot Blueberry'
     4:
-      - 'I am a robot. My name is leena. I am younger sister of robot sheena.'
+      - 'I am a robot. My name is Blueberry. I am younger sister of robot sheena.'
     5: 
       - 'I made by quanta robotics team'
     6:
@@ -63,7 +63,7 @@ Conversation:
       - 'I am talk to you'
       - 'I am listening you'
     9:
-      - 'No, I am robot leena, are you dont see me?'
+      - 'No, I am robot Blueberry, are you dont see me?'
     10:
       - 'Please say the command with robot.'
     11:
@@ -72,7 +72,7 @@ Conversation:
       - 'Jewel nath and mestu paul are my programmer.'
       - 'Jewel nath and mestu paul are my software devoloper'
     13:
-      - 'When you tell me hey leena than I activate and talk to you'
+      - 'When you tell me hey Blueberry than I activate and talk to you'
 
 
 Gpios:
@@ -127,6 +127,6 @@ Wakewords:
   Custom_Wakeword: 'Enabled'
   Wakeword_Engine: 'Picovoice'
   Picovoice_wakeword_models:
-    - '/home/pi/Robot-Leena/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
+    - '/home/pi/Robot-Blueberry/src/resources/picovoice_models/hey_lena_raspberry-pi.ppn'
     
 

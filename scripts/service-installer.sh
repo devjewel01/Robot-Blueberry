@@ -20,6 +20,6 @@ repo_path="$PWD"
 
 
 for service in systemd/*.service; do
-	sed "s:/home/__USER__/Robot-Leena:${repo_path}:g;s:__USER__:${GIT_OWNER}:g" "$service" \
+	sed "s:/home/__USER__/Robot-Blueberry:${repo_path}:g;s:__USER__:${GIT_OWNER}:g" "$service" \
 	 > "/lib/systemd/system/$(basename "$service")"
 done

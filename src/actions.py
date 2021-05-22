@@ -194,88 +194,88 @@ def Action(phrase):
         os.system("sudo shutdown -h now")
     elif 'hands up' in phrase:
         say('my hands up')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hands_up.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hands_up.py")
     elif 'hand up' in phrase:
         say('my hands up')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hands_up.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hands_up.py")
     elif 'hug me'  in phrase:
         say('come on and hug me')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hug.py")
     elif 'hath me'  in phrase:
         say('come on and hug me')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hug.py")
     elif 'hackme'  in phrase:
         say('come on and hug me')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hug.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hug.py")
     elif 'salute' in phrase:
         say('please take my salute')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/salute.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/salute.py")
     elif 'hand shake' in phrase:
-        say('hello I am leena')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hand_shake.py")
+        say('hello I am Blueberry')
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hand_shake.py")
     elif 'handshake' in phrase:
-        say('hello I am leena')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/hand_shake.py")
+        say('hello I am Blueberry')
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/hand_shake.py")
     elif 'move your hand' in phrase:
         say('see my hand movement')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/bothHand.py")
     elif 'movie hand' in phrase:
         say('see my hand movement')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/bothHand.py")
     elif 'move hand' in phrase:
         say('see my hand movement')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/bothHand.py")
     elif 'mop hand' in phrase:
         say('see my hand movement')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/bothHand.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/bothHand.py")
     elif 'move your right hand' in phrase:
         say('my right hand')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/rightHand.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/rightHand.py")
     elif 'move your left hand' in phrase:
         say('my left hand')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/leftHand.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/leftHand.py")
     elif 'move your head' in phrase:
         say('I learn to move my head')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/yes.py")
-        os.system("python3 /home/pi/Robot-Leena/robot-control/no.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/yes.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/no.py")
     elif 'no' in phrase:
         say('I do not agree with you')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/no.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/no.py")
     elif 'yes' in phrase:
         say('I am agree with you')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/yes.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/yes.py")
     elif 'left right' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/left-right.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/left-right.py")
     elif 'tata' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/tata.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/tata.py")
     elif 'bye' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/bye.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/bye.py")
     elif 'touch your head' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/touchHead.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/touchHead.py")
     elif 'touch your nose' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/touchNose.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/touchNose.py")
     elif 'touch your ear' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/touchEar.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/touchEar.py")
     elif 'touch your eye' in phrase:
-        os.system("python3 /home/pi/Robot-Leena/robot-control/touchEye.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/touchEye.py")
     elif 'go forward' in phrase:
         say('go and go')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/goForward.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/goForward.py")
     elif 'go back'  in phrase:
         say('I do not like to go back')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/goBack.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/goBack.py")
     elif 'turn left' in phrase:
         say('turn left my face')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/turnLeft.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/turnLeft.py")
     elif 'tan lab' in phrase:
         say('turn left my face')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/turnLeft.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/turnLeft.py")
     elif 'turn right' in phrase:
         say('turn right my face')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/turnRight.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/turnRight.py")
     elif 'turn write' in phrase:
         say('turn right my face')
-        os.system("python3 /home/pi/Robot-Leena/robot-control/turnRight.py")
+        os.system("python3 /home/pi/Robot-Blueberry/robot-control/turnRight.py")
     else:
         say('please say the command again')
 

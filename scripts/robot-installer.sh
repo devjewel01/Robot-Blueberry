@@ -51,7 +51,7 @@ google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-proto
 
 
 echo ""
-echo "Finished installing Robot Leena......."
+echo "Finished installing Robot Blueberry......."
 echo ""
 echo ""
 echo "Please reboot........"

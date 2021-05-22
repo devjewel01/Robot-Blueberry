@@ -404,7 +404,7 @@ class Myassistant():
             if gender=='Male':
                 subprocess.Popen(["aplay", "{}/audio-files/Startup-Male.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             else:
-                subprocess.Popen(["aplay", "/home/pi/Robot-Leena/audio-files/welcome leena.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                subprocess.Popen(["aplay", "/home/pi/Robot-Blueberry/audio-files/welcome.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             events = assistant.start()
             device_id = assistant.device_id
             print('device_model_id:', device_model_id)

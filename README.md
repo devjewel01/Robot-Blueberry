@@ -1,5 +1,5 @@
 
-# Robot Leena
+# Robot Blueberry
 
 ## **It is Raspberry Pi based Humanoid Robot**
 

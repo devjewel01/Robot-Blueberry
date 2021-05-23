@@ -103,15 +103,24 @@ class Myassistant():
             os.system("sudo rm {}/.mute".format(USER_PATH))
             assistantindicator('unmute')
             if configuration['Wakewords']['Ok_Google']=='Disabled':
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
                 self.assistant.set_mic_mute(True)
+                time.sleep(1)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
                 print("Mic is open, but Ok-Google is disabled")
             else:
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
                 self.assistant.set_mic_mute(False)
+                time.sleep(1)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
                 print("Turning on the microphone")
         else:
             open('{}/.mute'.format(USER_PATH), 'a').close()
             assistantindicator('mute')
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
             self.assistant.set_mic_mute(True)
+            time.sleep(1)
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
             print("Turning off the microphone")
 
     def buttondoublepress(self):
@@ -176,7 +185,10 @@ class Myassistant():
             if os.path.isfile("{}/.mute".format(USER_PATH)):
                 assistantindicator('mute')
             if (configuration['Wakewords']['Ok_Google']=='Disabled' or os.path.isfile("{}/.mute".format(USER_PATH))):
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
                 self.assistant.set_mic_mute(True)
+                time.sleep(1)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
             if custom_wakeword:
                 self.t1.start()
 
@@ -194,7 +206,10 @@ class Myassistant():
                 assistantindicator('off')
 
             if (configuration['Wakewords']['Ok_Google']=='Disabled' or os.path.isfile("{}/.mute".format(USER_PATH))):
-                  self.assistant.set_mic_mute(True)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
+                self.assistant.set_mic_mute(True)
+                time.sleep(1)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
             if os.path.isfile("{}/.mute".format(USER_PATH)):
                 if GPIOcontrol:
                     assistantindicator('mute')
@@ -227,7 +242,10 @@ class Myassistant():
             if GPIOcontrol:
                 assistantindicator('off')
             if (configuration['Wakewords']['Ok_Google']=='Disabled' or os.path.isfile("{}/.mute".format(USER_PATH))):
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
                 self.assistant.set_mic_mute(True)
+                time.sleep(1)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
             if os.path.isfile("{}/.mute".format(USER_PATH)):
                 if GPIOcontrol:
                     assistantindicator('mute')
@@ -258,7 +276,10 @@ class Myassistant():
     def detected(self):
         if self.can_start_conversation == True:
             if self.mutestatus:
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
                 self.assistant.set_mic_mute(False)
+                time.sleep(1)
+                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
                 time.sleep(1)
                 self.assistant.start_conversation()
             if not self.mutestatus:

@@ -1,7 +1,7 @@
 
 # Robot Blueberry
 
-## **It is Raspberry Pi based Humanoid Robot**
+## **It is Raspberry Pi based Humanoid Robot** using [GassistPi Project](https://github.com/shivasiddharth/GassistPi)
 
 <!--lint ignore double-link-->
 <img src="https://i.imgur.com/qI1Jfyl.gif" align="right" width="60%" />
@@ -13,8 +13,8 @@
 | Name               | Post               | Email                         |  
 | ------------------ | ---------          | ----------------------------- |
 | [**Shanjit Mondal**](https://www.facebook.com/shanjit.mondol.50) | [Circuit  & Mechanical Designer](https://github.com/shanjit11) | shanjitmondal11@gmail.com       | 
-| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer(Software Developer)](https://github.com/devjewel01)       | devjewel.cou.ict10@gmail.com  |  
-| [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer(Software Developer)](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
+| [**Jewel Nath**](https://www.facebook.com/dev.jewel.5/)     | [Programmer](https://github.com/devjewel01)       | devjewel.cou.ict10@gmail.com  |  
+| [**Mestu Paul**](https://www.facebook.com/mestu.paul.812)     | [Programmer](https://github.com/Mestu-Paul)       |paulmestu@gmail.com            |   
 
 
 <!--lint ignore double-link-->

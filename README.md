@@ -59,7 +59,7 @@
 <br />
 
 ## Servo Motor Position Block Diagram:
-<img width="60%"  src="Store/pic/servo_position.jpg">
+<img width="60%"  src="Store/pic/2021-05-23_1511451.png">
 
 ### Servo Initial positions:
  

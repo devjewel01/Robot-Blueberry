@@ -1,7 +1,7 @@
 
 # Robot Blueberry
 
-## **It is Raspberry Pi based Humanoid Robot** using [GassistPi Project](https://github.com/shivasiddharth/GassistPi)
+## **It is Raspberry Pi based Humanoid Robot** using [GassistPi](https://github.com/shivasiddharth/GassistPi)
 
 <!--lint ignore double-link-->
 <img src="https://i.imgur.com/qI1Jfyl.gif" align="right" width="60%" />

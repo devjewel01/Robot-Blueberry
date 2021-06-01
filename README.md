@@ -1,7 +1,7 @@
 
 # Robot Blueberry
 
-## **It is Raspberry Pi based Humanoid Robot** using [GassistPi](https://github.com/shivasiddharth/GassistPi)
+## **It is Raspberry Pi based Humanoid Robot**
 
 <!--lint ignore double-link-->
 <img src="https://i.imgur.com/qI1Jfyl.gif" align="right" width="60%" />
@@ -192,9 +192,12 @@ for i in range(0, 10):
 
 
 
-
 <br/>
 <br/>
 
 
-
+### Acknowledge
+ * [Shivasiddharth](https://github.com/shivasiddharth)
+ * [Picovoice](https://github.com/Picovoice)
+ * [Simon Monk](https://github.com/simonmonk)
+ * [StackOverflow](https://stackoverflow.com/questions/tagged/raspberry-pi)

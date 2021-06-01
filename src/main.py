@@ -1,60 +1,32 @@
 #!/usr/bin/env python
 
-# Copyright 2017 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-try:
-    import RPi.GPIO as GPIO
-except Exception as e:
-    GPIO = None
-
-
-from actions import say
-from actions import Action
-from actions import configuration
+from moveGoogle import  speakOnline
+from talk import say
+from talk import custom_conversation
 from threading import Thread
-from actions import gender
 import argparse
 import json
 import os.path
+import pathlib2 as pathlib
 import os
 import struct
 import subprocess
 import logging
 import time
 import random
-
 import pvporcupine
 import pyaudio
-
 import google.oauth2.credentials
 from google.assistant.library import Assistant
 from google.assistant.library.event import EventType
 from google.assistant.library.file_helpers import existing_file
 from google.assistant.library.device_helpers import register_device
-if GPIO!=None:
-    from indicator import assistantindicator
-    from indicator import stoppushbutton
-    GPIOcontrol=True
-else:
-    GPIOcontrol=False
+from indicator import assistantindicator
 
 try:
     FileNotFoundError
 except NameError:
     FileNotFoundError = IOError
-
 
 WARNING_NOT_REGISTERED = ""
 
@@ -73,26 +45,16 @@ ROOT_PATH = os.path.realpath(os.path.join(__file__, '..', '..'))
 USER_PATH = os.path.realpath(os.path.join(__file__, '..', '..','..'))
 
 
-
-
 mutestopbutton=True
 
+picovoice_models=['/home/pi/blueberry.ppn']
+wakeword_length=1
 
-if configuration['Wakewords']['Custom_Wakeword']=='Enabled':
-    custom_wakeword=True
-else:
-    custom_wakeword=False
+numQuestion=len(custom_conversation['Conversation']['Question'])
+numAnswer=len(custom_conversation['Conversation']['Answer'])
+numInput=len(custom_conversation['Command']['Input'])
+numOutput=len(custom_conversation['Command']['Output'])
 
-
-picovoice_models=configuration['Wakewords']['Picovoice_wakeword_models']
-
-
-if configuration['Wakewords']['Wakeword_Engine']=='Picovoice':
-    wakeword_length=len(picovoice_models)
-
-
-numques=len(configuration['Conversation']['question'])
-numans=len(configuration['Conversation']['answer'])
 
 class Myassistant():
 
@@ -106,139 +68,56 @@ class Myassistant():
         self._sensitivities = [0.5]*wakeword_length
         self.mutestatus=False
         self.singleresposne=False
-        self.singledetectedresponse=''
-        if configuration['Wakewords']['Wakeword_Engine']=='Picovoice':
-            self.t1 = Thread(target=self.picovoice_run)
-        if GPIOcontrol:
-            self.t2 = Thread(target=self.pushbutton)
-
-    def buttonsinglepress(self):
-        if os.path.isfile("{}/.mute".format(USER_PATH)):
-            os.system("sudo rm {}/.mute".format(USER_PATH))
-            assistantindicator('unmute')
-            if configuration['Wakewords']['Ok_Google']=='Disabled':
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
-                self.assistant.set_mic_mute(True)
-                time.sleep(1)
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
-                print("Mic is open, but Ok-Google is disabled")
-            else:
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
-                self.assistant.set_mic_mute(False)
-                time.sleep(1)
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
-                print("Turning on the microphone")
-        else:
-            open('{}/.mute'.format(USER_PATH), 'a').close()
-            assistantindicator('mute')
-            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
-            self.assistant.set_mic_mute(True)
-            time.sleep(1)
-            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
-            print("Turning off the microphone")
-
-    def buttondoublepress(self):
-        print('Stopped')
-        stop()
-
-    def buttontriplepress(self):
-        print("Create your own action for button triple press")
-
-    def pushbutton(self):
-        if GPIOcontrol:
-            while mutestopbutton:
-                time.sleep(.1)
-                if GPIO.event_detected(stoppushbutton):
-                    GPIO.remove_event_detect(stoppushbutton)
-                    now = time.time()
-                    count = 1
-                    GPIO.add_event_detect(stoppushbutton,GPIO.RISING)
-                    while time.time() < now + 1:
-                         if GPIO.event_detected(stoppushbutton):
-                             count +=1
-                             time.sleep(.25)
-                    if count == 2:
-                        self.buttonsinglepress()
-                        GPIO.remove_event_detect(stoppushbutton)
-                        GPIO.add_event_detect(stoppushbutton,GPIO.FALLING)
-                    elif count == 3:
-                        self.buttondoublepress()
-                        GPIO.remove_event_detect(stoppushbutton)
-                        GPIO.add_event_detect(stoppushbutton,GPIO.FALLING)
-                    elif count == 4:
-                        self.buttontriplepress()
-                        GPIO.remove_event_detect(stoppushbutton)
-                        GPIO.add_event_detect(stoppushbutton,GPIO.FALLING)
-
-
-    def process_device_actions(self,event, device_id):
-        if 'inputs' in event.args:
-            for i in event.args['inputs']:
-                if i['intent'] == 'action.devices.EXECUTE':
-                    for c in i['payload']['commands']:
-                        for device in c['devices']:
-                            if device['id'] == device_id:
-                                if 'execution' in c:
-                                    for e in c['execution']:
-                                        if 'params' in e:
-                                            yield e['command'], e['params']
-                                        else:
-                                            yield e['command'], None
-
+        self.singledetectedresponse=''       
+        self.t1 = Thread(target=self.picovoice_run)
 
     def process_event(self,event):
-        print(event)
+        print('event is ', event)
         print()
         if event.type == EventType.ON_MUTED_CHANGED:
             self.mutestatus=event.args["is_muted"]
 
+
         if event.type == EventType.ON_START_FINISHED:
             self.can_start_conversation = True
-            if GPIOcontrol:
-                self.t2.start()
             if os.path.isfile("{}/.mute".format(USER_PATH)):
                 assistantindicator('mute')
-            if (configuration['Wakewords']['Ok_Google']=='Disabled' or os.path.isfile("{}/.mute".format(USER_PATH))):
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
-                self.assistant.set_mic_mute(True)
-                time.sleep(1)
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
-            if custom_wakeword:
-                self.t1.start()
+            
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
+            self.assistant.set_mic_mute(True)
+            time.sleep(0.9)
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
+
+            self.t1.start()
 
 
         if event.type == EventType.ON_CONVERSATION_TURN_STARTED:
-            subprocess.Popen(["aplay", "{}/audio-files/Fb.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.Popen(["aplay", "{}/audio-files/listening.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             self.can_start_conversation = False
+            assistantindicator('listening')
 
-            if GPIOcontrol:
-                assistantindicator('listening')
 
         if (event.type == EventType.ON_CONVERSATION_TURN_TIMEOUT or event.type == EventType.ON_NO_RESPONSE):
             self.can_start_conversation = True
-            if GPIOcontrol:
-                assistantindicator('off')
-
-            if (configuration['Wakewords']['Ok_Google']=='Disabled' or os.path.isfile("{}/.mute".format(USER_PATH))):
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
-                self.assistant.set_mic_mute(True)
-                time.sleep(1)
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
+            assistantindicator('off')
+            
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
+            self.assistant.set_mic_mute(True)
+            time.sleep(0.9)
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
             if os.path.isfile("{}/.mute".format(USER_PATH)):
-                if GPIOcontrol:
-                    assistantindicator('mute')
+                assistantindicator('mute')
+
 
         if (event.type == EventType.ON_RESPONDING_STARTED and event.args and not event.args['is_error_response']):
-            if GPIOcontrol:
-                assistantindicator('speaking')
+            assistantindicator('speaking')
 
         if event.type == EventType.ON_RESPONDING_FINISHED:
-            if GPIOcontrol:
-                assistantindicator('off')
+            assistantindicator('off')
+
 
         if event.type == EventType.ON_RECOGNIZING_SPEECH_FINISHED:
-            if GPIOcontrol:
-                assistantindicator('off')
+            assistantindicator('off')
             if self.singleresposne:
                 self.assistant.stop_conversation()
                 self.singledetectedresponse= event.args["text"]
@@ -246,27 +125,33 @@ class Myassistant():
                 usrcmd=event.args["text"]
                 self.custom_command(usrcmd)
 
-        if event.type == EventType.ON_RENDER_RESPONSE:
-            if GPIOcontrol:
-                assistantindicator('off')
 
-        if (event.type == EventType.ON_CONVERSATION_TURN_FINISHED and
-                event.args and not event.args['with_follow_on_turn']):
+        if event.type == EventType.ON_RENDER_RESPONSE:
+            assistantindicator('off')
+
+
+        if (event.type == EventType.ON_CONVERSATION_TURN_FINISHED and event.args and not event.args['with_follow_on_turn']):
             self.can_start_conversation = True
-            if GPIOcontrol:
-                assistantindicator('off')
-            if (configuration['Wakewords']['Ok_Google']=='Disabled' or os.path.isfile("{}/.mute".format(USER_PATH))):
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
-                self.assistant.set_mic_mute(True)
-                time.sleep(1)
-                os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
+            assistantindicator('off')
+            
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-off.sh")
+            self.assistant.set_mic_mute(True)
+            time.sleep(0.9)
+            os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
             if os.path.isfile("{}/.mute".format(USER_PATH)):
-                if GPIOcontrol:
-                    assistantindicator('mute')
+                assistantindicator('mute')
+
 
         if event.type == EventType.ON_DEVICE_ACTION:
             for command, params in event.actions:
                 print('Do command', command, 'with params', str(params))
+
+
+        if event.type == EventType.ON_RENDER_RESPONSE:
+            onlineAnswer= event.args["text"]
+            print('online answer is  ', onlineAnswer)
+            print('length of answer = ', len(onlineAnswer))
+             
 
 
     def register_device(self,project_id, credentials, device_model_id, device_id):
@@ -294,11 +179,11 @@ class Myassistant():
                 self.assistant.set_mic_mute(False)
                 time.sleep(1)
                 os.system("sudo /home/pi/Robot-Blueberry/audio-setup/sound-on.sh")
-                time.sleep(1)
                 self.assistant.start_conversation()
             if not self.mutestatus:
                 self.assistant.start_conversation()
-            print('Assistant is listening....')
+            print('Robot is listening....')
+
 
     def picovoice_run(self):
         keywords = list()
@@ -353,29 +238,34 @@ class Myassistant():
         self.singleresposne=False
         return self.singledetectedresponse
 
+
     def custom_command(self,usrcmd):
-        if configuration['Script']['Script_Control']=='Enabled':
-            if 'script'.lower() in str(usrcmd).lower():
-                script(str(usrcmd).lower())
 
-        if configuration['Conversation']['Conversation_Control']=='Enabled':
-            for i in range(1,numques+1):
-                try:
-                    if str(configuration['Conversation']['question'][i][0]).lower() in str(usrcmd).lower():
-                        self.assistant.stop_conversation()
-                        selectedans=random.sample(configuration['Conversation']['answer'][i],1)
-                        say(selectedans[0])
-                        break
-                except Keyerror:
-                    say('Please check if the number of questions matches the number of answers')
-
-        if configuration['Raspberrypi_GPIO_Control']['GPIO_Control']=='Enabled':
-            if 'robot'.lower() in str(usrcmd).lower():
-                self.assistant.stop_conversation()
-                Action(str(usrcmd).lower())
+        for i in range(1,numQuestion+1):
+            try:
+                if str(custom_conversation['Conversation']['Question'][i][0]).lower() in str(usrcmd).lower():
+                    self.assistant.stop_conversation()
+                    selectedans=random.sample(custom_conversation['Conversation']['Answer'][i],1)
+                    say(selectedans[0])
+                    break
+            except Keyerror:
+                say('Please check if the number of questions matches the number of answers')
 
 
-        
+        for i in range(1,numInput+1):
+            try:
+                if str(custom_conversation['Command']['Input'][i][0]).lower() in str(usrcmd).lower():
+                    self.assistant.stop_conversation()
+                    selected=random.sample(custom_conversation['Command']['Output'][i],1)
+                    os.system("python3 /home/pi/Robot-Blueberry/src/movement/"+selected[0])
+                    break
+            except Keyerror:
+                say('Please check if the number of inputs matches the number of outputs')
+
+
+        if 'google'.lower() in str(usrcmd).lower():
+            self.assistant.stop_conversation()
+            say("sorry, call me robot Blueberry")
 
 
     def main(self):
@@ -436,10 +326,9 @@ class Myassistant():
         device_model_id = args.device_model_id or device_model_id
         with Assistant(credentials, device_model_id) as assistant:
             self.assistant = assistant
-            if gender=='Male':
-                subprocess.Popen(["aplay", "{}/audio-files/Startup-Male.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            else:
-                subprocess.Popen(["aplay", "/home/pi/Robot-Blueberry/audio-files/welcome.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            
+            subprocess.Popen(["aplay", "/home/pi/Robot-Blueberry/audio-files/welcome.wav".format(ROOT_PATH)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            
             events = assistant.start()
             device_id = assistant.device_id
             print('device_model_id:', device_model_id)
@@ -460,12 +349,13 @@ class Myassistant():
                     print(WARNING_NOT_REGISTERED)
 
             for event in events:
+                if event.type == EventType.ON_RENDER_RESPONSE:
+                    speakOnline((int)(len(event.args["text"])/20))
                 if event.type == EventType.ON_START_FINISHED and args.query:
                     assistant.send_text_query(args.query)
                 self.process_event(event)
 
-        if custom_wakeword:
-            self.detector.terminate()
+        self.detector.terminate()
 
 
 if __name__ == '__main__':

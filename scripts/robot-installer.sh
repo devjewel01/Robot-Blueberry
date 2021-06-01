@@ -26,10 +26,9 @@ then
     exec sudo -u $RUN_AS $0
 fi
 
-
 clear
 echo ""
-credname="/home/pi/client_secret_139005475233-puh3du04cmmek1084haf8m71k6og9cll.apps.googleusercontent.com.json"
+credname="/home/pi/robot.json"
 
 sudo apt-get update -y
 sed 's/#.*//' ${GIT_DIR}/Requirements/robot-system-requirements.txt | xargs sudo apt-get install -y
@@ -40,7 +39,6 @@ cd /home/${USER}/
 python3 -m venv env
 env/bin/python -m pip install --upgrade pip setuptools wheel
 source env/bin/activate
-
 pip install -r ${GIT_DIR}/Requirements/robot-pip-requirements.txt
 
 
@@ -50,9 +48,7 @@ if [ -f /lib/udev/rules.d/91-pulseaudio-rpi.rules ] ; then
     sudo rm /lib/udev/rules.d/91-pulseaudio-rpi.rules
 fi
 
-
 pip install google-assistant-library==1.1.0
-
 
 pip install google-assistant-grpc==0.3.0
 pip install google-assistant-sdk==0.6.0
@@ -62,9 +58,7 @@ google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-proto
           --save --headless --client-secrets $credname
 
 
-
 echo ""
 echo "Finished installing Robot Blueberry......."
-echo ""
 echo ""
 echo "Please reboot........"

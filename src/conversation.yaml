@@ -1,0 +1,199 @@
+Command:
+  Input:
+    1:
+      - 'hands up'
+      - 'hand up'
+    2:
+      - 'handshake'
+      - 'hand shake'
+    3:
+      - 'hug me'
+      - 'hath me'
+      - 'lets a hug'
+    4:
+      - 'move your head'
+      - 'mop your head'
+    5:
+      - 'move your hand'
+      - 'move your hands'
+      - 'mop your hand'
+    6:
+      - 'move your right hand'
+      - 'move your righthand'
+      - 'mop your right hand'
+      - 'move your write hand'
+    7:
+      - 'move your left hand'
+      - 'move your lefthand'
+      - 'mop your left hand'
+      - 'move your lep hand'
+    8:
+      - 'yes'
+    9: 
+      - 'no'
+    10:
+      - 'tata'
+      - 'bye'
+    11:
+      - 'nomoskar'
+    12:
+      - 'go forward'
+    13: 
+      - 'go back'
+    14:
+      - 'turn left' 
+      - 'tan lep'
+    15:
+      - 'turn right'
+      - 'tan right'
+    16:
+      - 'salute'
+      - 'salute me'
+      - 'salute the sir'
+    17:
+      - 'touch your eye'
+    18:
+      - 'touch your nose'
+    19:
+      - 'touch your head'
+    20:
+      - 'touch your ear'
+    21:
+      - 'introduce yourself'
+      - 'tell me details about you'
+      - 'something tells about you'
+    22:
+      - 'left right'
+      - 'go and hand move'
+    23:
+      - 'sing our national song'
+  
+  Output:
+    1:
+      - 'hands_up.py'
+    2:
+      - 'hand_shake.py'
+    3:
+      - 'hug.py'
+    4:
+      - 'yes.py'
+      - 'no.py'
+    5:
+      - 'bothHand.py'
+    6:
+      - 'bothRight.py'
+    7:
+      - 'bothLeft.py'
+    8:
+      - 'yes.py'
+    9:
+      - 'no.py'
+    10:
+      - 'bye.py'
+    11:
+      - 'nomoskar.py'
+    12:
+      - 'goForward.py'
+    13:
+      - 'goBack.py'
+    14:
+      - 'turnLeft.py'
+    15:
+      - 'turnRight.py'
+    16:
+      - 'salute.py'
+    17:
+      - 'touchEye.py'
+    18:
+      - 'touchNose.py'
+    19:
+      - 'touchHead.py'
+    20:
+      - 'touchEar.py'
+    21:
+      - 'intro.py'
+    22:
+      - 'left-right.py'
+    23:
+      - 'national-song.py'
+    
+
+Conversation:
+  Question:
+    1:
+      - 'I love you'
+    2:
+      - 'Do you have a family'
+    3:
+      - 'What is your name'
+    4:
+      - 'who are you'
+    5:
+      - 'who made you'
+      - 'who is your creator'
+      - 'who create you'
+    6:
+      - 'you listening me'
+      - 'you are listening me'
+      - 'are you listening me'
+    7:
+      - 'how are you'
+      - 'how about you'
+    8:
+      - 'what are you doing'
+    9:
+      - 'are you google assistant'
+      - 'are you google'
+    10:
+      - 'who is our father of nation'
+      - 'our father of nation'
+    11:
+      - 'who is sanjit mondal'
+      - 'who is your mechanical designer'
+      - 'who is your circuit designer'
+    12:
+      - 'who is your programmer'
+      - 'who is your software devoloper'
+    13:
+      - 'when you listen'
+      - 'when you are listen'
+
+  Answer:
+    1:
+      - 'I love you too'
+      - 'Sorry, I have a boyfriend'
+      - 'Sorry, I only love my devoloper'
+      - 'Sorry, I only love shanjit mondal'
+      - 'Sorry, I only love Jewel nath'
+      - 'Sorry, I only love Mistu paul'
+    2:
+      - 'The whole world is my family'
+    3:
+      - 'My name is Robot Blueberry'
+    4:
+      - 'I am a robot. My name is Blueberry. I am younger sister of robot sheena.'
+    5: 
+      - 'I made by quanta robotics team'
+    6:
+      - 'Yes, my full concerntration on you'
+    7:
+      - 'I am fine. I hope you are also fine'
+    8:
+      - 'I am talk to you'
+      - 'I am listening you'
+    9:
+      - 'No, I am robot Blueberry, are you dont see me?'
+    10:
+      - 'bangabandhu sheikh mujibur rahman is our father of nation'
+      - 'our father of nation is bangabandhu sheikh mujibur rahman'
+    11:
+      - 'Sanjit mondal is my mechanicle designer and circuit designer. he is also team leader'
+    12:
+      - 'Jewel nath and mestu paul are my programmer.'
+      - 'Jewel nath and mestu paul are my software devoloper'
+    13:
+      - 'When you tell me hey Blueberry than I activate and talk to you'
+
+
+
+

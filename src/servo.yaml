@@ -65,3 +65,5 @@ Pin:
   - 13
   - 14
   - 15
+Sensor:
+  gas: 'off'

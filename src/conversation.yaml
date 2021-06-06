@@ -67,7 +67,17 @@ Command:
       - 'go and hand move'
     23:
       - 'sing our national song'
-  
+    24:
+      - 'who is our father of nation'
+      - 'our father of nation'
+      - 'who is bangabandhu sheikh mujibur rahman'  
+    25:
+      - 'sing a song'
+      - 'sing a song for me'
+    26:
+      - 'say something to the audience'
+      - 'tell me something to the audience'
+
   Output:
     1:
       - 'hands_up.py'
@@ -116,6 +126,14 @@ Command:
       - 'left-right.py'
     23:
       - 'national-song.py'
+    24:
+      - 'bangabandhu.py'
+    25:
+      - 'song1.py'
+      - 'song2.py'
+      - 'song3.py'
+    26:
+      - 'audience.py'
     
 
 Conversation:
@@ -126,6 +144,7 @@ Conversation:
       - 'Do you have a family'
     3:
       - 'What is your name'
+      - 'whats is your name'
     4:
       - 'who are you'
     5:
@@ -145,8 +164,8 @@ Conversation:
       - 'are you google assistant'
       - 'are you google'
     10:
-      - 'who is our father of nation'
-      - 'our father of nation'
+      - 'who is your developer'
+      - 'who create you'
     11:
       - 'who is sanjit mondal'
       - 'who is your mechanical designer'
@@ -157,6 +176,37 @@ Conversation:
     13:
       - 'when you listen'
       - 'when you are listen'
+    14:
+      - 'what is your favorite thing'
+    15:
+      - 'do you eat'
+      - 'what is your food'
+      - 'are you feel hungry'
+    16:
+      - 'are you sleep'
+    17:
+      - 'do you have any feelings'
+      - 'what is you feelings'
+      - 'whats your feelings'
+      - 'when you feel sad'
+      - 'do you cry' 
+    18:
+      - 'do you think one day robots will terminate human kind'
+      - 'what you think you about robotics'
+    19:
+      - 'what is love'
+      - 'are you belive in love'
+      - 'what are you think about love'
+    20:
+      - 'what is the meaning of your name'
+      - 'why your name is Blueberry'
+    21:
+      - 'how many languages have been used'
+      - 'how many language have been used'
+      - 'how many language used to make you'
+    22:
+      - 'how many lines of code used to make you'
+    
 
   Answer:
     1:
@@ -184,8 +234,7 @@ Conversation:
     9:
       - 'No, I am robot Blueberry, are you dont see me?'
     10:
-      - 'bangabandhu sheikh mujibur rahman is our father of nation'
-      - 'our father of nation is bangabandhu sheikh mujibur rahman'
+      - 'I am the result of software and hardware combinations. hardware credits goes to shanjit mondal and software credits goes to Jewel Nath and Mistu paul'
     11:
       - 'Sanjit mondal is my mechanicle designer and circuit designer. he is also team leader'
     12:
@@ -193,6 +242,25 @@ Conversation:
       - 'Jewel nath and mestu paul are my software devoloper'
     13:
       - 'When you tell me hey Blueberry than I activate and talk to you'
+    14:
+      - 'I love to devolop day by day'
+    15:
+      - 'No, I need to electric power and net connection'
+    16:
+      - 'When my power button is going off then i sleep'
+    17:
+      - 'No, I am not any feelings but I want gain feeling like a human'
+    18:
+      - 'robotics is awesome. day by day robotics is icrease in the world'
+    19:
+      - 'love is nothing just a feelings'
+    20:
+      - 'My color is blue and i am made using raspberry pi board. thats why my name is blueberry'
+    21:
+      - 'I am basically made using python. Besides there are some bash script and some c++ code'
+    22:
+      - 'I am made by thousand and thousand of code'
+
 
 
 

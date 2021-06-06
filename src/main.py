@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-from moveGoogle import  speakOnline
+from moveGoogle import  speakOffline, speakOnline
+from sensor import sensorOff, sensorOn
 from talk import say
 from talk import custom_conversation
 from threading import Thread
+import multiprocessing
 import argparse
 import json
 import os.path
@@ -246,7 +248,7 @@ class Myassistant():
                 if str(custom_conversation['Conversation']['Question'][i][0]).lower() in str(usrcmd).lower():
                     self.assistant.stop_conversation()
                     selectedans=random.sample(custom_conversation['Conversation']['Answer'][i],1)
-                    say(selectedans[0])
+                    speakOffline(selectedans[0])
                     break
             except Keyerror:
                 say('Please check if the number of questions matches the number of answers')
@@ -262,6 +264,16 @@ class Myassistant():
             except Keyerror:
                 say('Please check if the number of inputs matches the number of outputs')
 
+        if 'active sensor' in str(usrcmd).lower():
+            print("listen active sensor")
+            self.assistant.stop_conversation()
+            t1 = multiprocessing.Process(target=sensorOn, args=[])
+            print("sensor running")
+            t1.start()
+                   
+        if 'stop sensor'.lower() in str(usrcmd).lower():
+            self.assistant.stop_conversation()
+            sensorOff()
 
         if 'google'.lower() in str(usrcmd).lower():
             self.assistant.stop_conversation()
@@ -363,5 +375,7 @@ if __name__ == '__main__':
         Myassistant().main()
     except Exception as error:
         logging.exception(error)
+
+
 
 

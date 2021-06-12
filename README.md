@@ -1,5 +1,20 @@
+<details>
+ <summary>
+  <strong><h2>Index</h2></strong>
+ </summary>
+ <a href="#Robot_blueberry">Introduction</a></br>
+ <a href="#Device">Here we used</a></br>
+ <a href="#features">Features</a></br>
+ <a href="#languageTools">Language and Tools</a></br>
+ <a href="#Diageam">Position Block Diagram</a></br>
+ <a href="#servoInitialization">Servo Inital Position</a></br>
+ <a href="#DCMotorConnection">DC motor connection:</a></br>
+ <a href="#ServoMove">Servo Move</a></br>
+ <a href="#servoInitialization">Servo Inital Position</a></br>
+</details>
 
-# Robot Blueberry
+
+<h1 id="Robot_blueberry"> Robot Blueberry</h1>
 
 ## **It is Raspberry Pi based Humanoid Robot**
 
@@ -21,7 +36,8 @@
 <img src="Store/gif/robothand.gif" align="right" width="30%" />
 
 
-## Here we used:
+<h3 id="Device">Here we used:</h3>
+
 1. **Raspberry Pi** as a cpu of our robot
 2. **Servo Motors** for various hand's move
 3. **DC Motos** for runing
@@ -36,8 +52,8 @@
 
 <br />
 
+<h1 id="features">Features:</h1>
 
-## It's able to -
 * Take a cammand and replay accrding to command
 * Hand's UP
 * Hand Shake
@@ -50,7 +66,8 @@
 <img align="right" src="https://i.imgur.com/BzOnbkS.gif" />
 
 
-## Programming Language and tools we used - 
+<h1 id="languageTools">Programming Language and tools we used - </h1>
+
 | Python | C++ |  Bash | Terminal | Raspberry Pi |  Arduino |
 | ------ | ----| ------| -------- | ------------ | --------- |
 |<img align="left"  width="46px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" />|<img align="left"  width="46px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/cpp/cpp.png" />|<img align="left"  width="46px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bash/bash.png" />|<img align="left"  width="46px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />|<img align="left"  width="46px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/raspberry-pi/raspberry-pi.png" />|<img align="left"  width="46px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/arduino/arduino.png" />|
@@ -58,10 +75,13 @@
 <br />
 <br />
 
-## Servo Motor Position Block Diagram:
-<img width="60%"  src="Store/pic/2021-05-23_1511451.png">
+<h1 id="Diageam">Servo Motor Position Block Diagram:</h1>
 
-### Servo Initial positions:
+<img width="60%"  src="Store/pic/2021-05-23_1511451.png">
+<details>
+    <summary>
+        <h3 id="servoInitialization">Servo Initial positions:</h3>
+    </summary>
  
 |servo no | connection | position   | Limitation | Direction           | Description |  
 | ------- | ---------- | ---------- | -----------|  -------            | ---------   |
@@ -88,14 +108,22 @@
 | 21      | gpio-23(11)|    0       |        180 | Open/Close          |
 | 22      | gpio-24(8) |    0       |        180 | Open/Close          |
 
-### DC motor connection:
+</details>
+<details>
+    <summary>
+        <h3 id="DCMotorConnection">DC motor connection:</h3>
+    </summary>
+
 
 | Leg      |  Enable Pin | Front Pin  | Back Pin |
 | -------  | ---------   | ---------- | -------- |
 | Right    | 13(27)      |  35(19)    |  36(16)  | 
 | Left     | 15(22)      |  37(26)    |  38(20)  |
 
-### salute
+</details>
+<h3 id="ServoMove">Servo Move:</h3>
+<details>
+    <summary>Salute</summary>
 
 >start.
 
@@ -114,10 +142,12 @@
 | 3   |	   0   |
 | 5	  |  170   |
 
+</details>
 <br/>
 <br/>
 
-### Hug 
+<details>
+    <summary>Hug</summary>
 
 > start
 
@@ -140,8 +170,10 @@
 
 <br/>
 <br/>
+</details>
 
-### hand_shake 
+<details>
+    <summary>Hand Shake</summary>
 
 >start
 
@@ -152,14 +184,12 @@
 
 >shake
 
-```python
-for i in range(0, 10):
-    if i&1:
-        pin 7 = 155
-    else:
-        pin 7 = 125
-    sleep(0.02)
-```
+| pin |	degree |
+| ----| ----   |
+| 7	  | 155    |
+| 7	  | 125    |
+ 
+** 10 times change**
 
 >normal
  
@@ -171,6 +201,8 @@ for i in range(0, 10):
 <br/>
 <br/>
 
+</details>
+ 
 ### hand's_up.py  
 
 >start

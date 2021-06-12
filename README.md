@@ -1,7 +1,10 @@
+# Robot Blueberry
 <details>
- <summary>
-  <strong><h2>Index</h2></strong>
- </summary>
+    <summary>
+        <strong style="font-size:300%;">
+            Index
+        </strong>
+    </summary>
  <a href="#Robot_blueberry">Introduction</a></br>
  <a href="#Device">Here we used</a></br>
  <a href="#features">Features</a></br>
@@ -11,10 +14,9 @@
  <a href="#DCMotorConnection">DC motor connection:</a></br>
  <a href="#ServoMove">Servo Move</a></br>
  <a href="#servoInitialization">Servo Inital Position</a></br>
+ <a href="#Acknowledge">Acknowledge</a></br>
 </details>
-
-
-<h1 id="Robot_blueberry"> Robot Blueberry</h1>
+<p id="Robot_blueberry"></p>
 
 ## **It is Raspberry Pi based Humanoid Robot**
 
@@ -80,7 +82,7 @@
 <img width="60%"  src="Store/pic/2021-05-23_1511451.png">
 <details>
     <summary>
-        <h3 id="servoInitialization">Servo Initial positions:</h3>
+        <strong id="servoInitialization">Servo Initial positions:</strong>
     </summary>
  
 |servo no | connection | position   | Limitation | Direction           | Description |  
@@ -111,7 +113,7 @@
 </details>
 <details>
     <summary>
-        <h3 id="DCMotorConnection">DC motor connection:</h3>
+        <strong id="DCMotorConnection">DC motor connection:</strong>
     </summary>
 
 
@@ -143,9 +145,6 @@
 | 5	  |  170   |
 
 </details>
-<br/>
-<br/>
-
 <details>
     <summary>Hug</summary>
 
@@ -202,8 +201,10 @@
 <br/>
 
 </details>
- 
-### hand's_up.py  
+<details>
+    <summary>
+        Hand's Up
+    </summary>
 
 >start
 
@@ -222,13 +223,13 @@
 |4  | 180  |	3 |	0   |
 |2  | 160  |	1 |	20  |
 
-
+</details>
 
 <br/>
-<br/>
 
 
-### Acknowledge
+<h3 id="Acknowledge"> Acknowledge</h3>
+
  * [Shivasiddharth](https://github.com/shivasiddharth)
  * [Picovoice](https://github.com/Picovoice)
  * [Simon Monk](https://github.com/simonmonk)

@@ -1,0 +1,86 @@
+Current_Position:
+    Gpio:
+        - 90
+        - 180
+        - 180
+        - 0
+        - 0
+        - 0
+    I2C:
+        - 0
+        - 50
+        - 130
+        - 0
+        - 170
+        - 170
+        - 0
+        - 180
+        - 0
+        - 60
+        - 150
+        - 0
+Initial_Position:
+    Gpio:
+        - 90
+        - 180
+        - 180
+        - 0
+        - 0
+        - 0
+    I2C:
+        - 0
+        - 50
+        - 130
+        - 0
+        - 170
+        - 170
+        - 0
+        - 180
+        - 0
+        - 60
+        - 150
+        - 0
+Pin:
+    Gpio:
+        - 12
+        - 11
+        - 8
+        - 10
+        - 9
+        - 25
+    I2C:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+        - 14
+        - 15
+
+DC_Motor:
+        right:
+                enable: 27
+                front : 19
+                back  : 16
+        left :
+                enable: 22
+                front : 26
+                back  : 20
+                
+Sensor:
+    ultrasonic:
+        echo:   11
+        trigger: 8
+    gas  : 4 
+    smoke: 7
+    fire : 13
+    ldr  : 21

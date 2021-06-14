@@ -17,8 +17,17 @@ Current_Position:
   - 180
   - 0
   - 60
-  - 150
+  - 180
   - 0
+DC_Motor:
+  left:
+    back: 20
+    enable: 22
+    front: 26
+  right:
+    back: 16
+    enable: 27
+    front: 19
 Initial_Position:
   Gpio:
   - 90
@@ -42,7 +51,7 @@ Initial_Position:
   - 0
 Pin:
   Gpio:
-  - 21
+  - 12
   - 11
   - 8
   - 10
@@ -66,4 +75,12 @@ Pin:
   - 14
   - 15
 Sensor:
-  gas: 'off'
+  fire: 13
+  gas: 4
+  ldr: 21
+  mpu6050: I2C
+  smoke: 7
+  status: 'on'
+  ultrasonic:
+    echo: 11
+    trigger: 8

@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 from moveGoogle import  speakOffline, speakOnline
 from sensor import sensorOff, sensorOn
 from talk import say
@@ -283,7 +284,8 @@ class Myassistant():
             t1 = multiprocessing.Process(target=sensorOn, args=[])
             print("sensor running")
             t1.start()
-                   
+            
+            
         if 'stop sensor'.lower() in str(usrcmd).lower():
             self.assistant.stop_conversation()
             sensorOff()

@@ -56,12 +56,18 @@
 
 <h1 id="features">Features:</h1>
 
-* Take a cammand and replay accrding to command
+* Take a command and replay accrding to command
 * Hand's UP
 * Hand Shake
 * Salute
 * Go forward and backword
 * Turn left and right
+* Bye Bye
+* Auto move mode
+* Expression while talking
+* Hug
+* Move at any direction
+* Touch own body parts
 
 
 <!--lint ignore double-link-->

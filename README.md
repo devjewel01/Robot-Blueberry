@@ -38,13 +38,13 @@
 <img src="Store/gif/robothand.gif" align="right" width="30%" />
 
 
-<h3 id="Device">Here we used:</h3>
+<h3 id="Device">Component and Device</h3>
 
 1. **Raspberry Pi** as a cpu of our robot
-2. **Servo Motors** for various hand's move
-3. **DC Motos** for runing
-4. **Ultrasonic Sensors** for count distance
-5. **LED** for indicators
+2. **Servo Motors** for move of by parts
+3. **DC Motors** for displacement
+4. **Ultrasonic Sensors** for measurement of distance and obstacles
+5. **LED** for listening(green) and speakinging(red) indicators
 6. **LCD Display** for showing message
 7. **Aluminium** sheet, **Aluminum** angle, **SS** for making robot body
 8. **Makeup Mannequin** as a robot face

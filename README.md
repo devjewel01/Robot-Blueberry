@@ -1,4 +1,6 @@
 # Robot Blueberry
+<img src="Store/pic/DSC_0022.JPG" align="right" width="100%" />
+
 <details>
     <summary>
         <strong style="font-size:300%;">

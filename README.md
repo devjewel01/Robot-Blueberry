@@ -1,5 +1,5 @@
 # Robot Blueberry
-<img src="Store/pic/DSC_0022.JPG" align="right" width="100%" />
+<img src="Store/pic/DSC_0209.JPG" align="right" width="50%" height="10%" />
 
 <details>
     <summary>

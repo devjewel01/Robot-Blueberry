@@ -1,5 +1,8 @@
 # Robot Blueberry
-<img src="Store/pic/DSC_0209.JPG" align="right" width="50%" height="10%" />
+
+[<img src="Store/pic/DSC_0209.JPG" align="right" width="50%" height="10%" />](https://youtu.be/5AGnB9Y9vIk)
+
+
 
 <details>
     <summary>
@@ -16,8 +19,12 @@
  <a href="#DCMotorConnection">DC motor connection:</a></br>
  <a href="#ServoMove">Servo Move</a></br>
  <a href="#servoInitialization">Servo Inital Position</a></br>
+ <a href="#Pic">Robot pic</a></br>
+ <a href="#Video">Robot video</a></br>
+ <a href="#News">News</a></br>
  <a href="#Acknowledge">Acknowledge</a></br>
 </details>
+
 <p id="Robot_blueberry"></p>
 
 ## **It is Raspberry Pi based Humanoid Robot**
@@ -235,6 +242,37 @@
 
 <br/>
 
+<details>
+    <summary>
+        <strong id="Pic">Photos:</strong>
+    </summary>
+    <img src="Store/pic/DSC_0205.JPG" width="50%"/>
+    <img src="Store/pic/DSC_0213.JPG" width="50%"/>
+    <img src="Store/pic/DSC_0229.JPG" width="50%"/>
+    <img src="Store/pic/DSC_0217.JPG" width="50%"/>
+
+</details>
+
+<details>
+    <summary>
+        <strong id="Video">Videos:</strong>
+    </summary>
+
+[<img src="https://j.gifs.com/z6KlQY.gif" width="50%"/>](https://youtu.be/NaSFW2tjuGQ)
+[<img src="https://j.gifs.com/w0mg7R.gif" width="50%"/>](https://youtu.be/5AGnB9Y9vIk)
+
+</details>
+
+
+<details>
+    <summary>
+        <strong id="News">News:</strong>
+    </summary>
+    
+* [shadow news](https://www.shadow.com.bd/?p=28267)
+* [MCJ news](https://www.facebook.com/mcjnews/posts/1613278385545042)
+
+</details>
 
 <h3 id="Acknowledge"> Acknowledge</h3>
 

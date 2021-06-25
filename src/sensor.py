@@ -242,7 +242,6 @@ def loop():
 
         if Fire == 0: 
             print("Something is not okay")
-            say("fire, fire, fire, fire")
         if Gas == 0 :
             print("Something is not okay")
             say("gas, gas, please check, there are gas leaked")

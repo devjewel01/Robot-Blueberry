@@ -5,8 +5,9 @@ import os.path
 import yaml
 import time
 import random
-
+import multiprocessing
 import RPi.GPIO as GPIO
+from talk import say
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 from adafruit_servokit import ServoKit
@@ -30,13 +31,13 @@ hand = ServoKit(channels=16)
 ROOT_PATH = os.path.realpath(os.path.join(__file__, '..', '..'))
 
 def readYaml():
-    with open('{}/src/servo.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
+    with open('{}/src/configuration.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
         servo = yaml.load(conf, Loader=yaml.FullLoader)
     return servo
 
 
 def writeYaml(s=None):
-    with open('{}/src/servo.yaml'.format(ROOT_PATH),'w', encoding='utf8') as conf:
+    with open('{}/src/configuration.yaml'.format(ROOT_PATH),'w', encoding='utf8') as conf:
         if s==None:
             yaml.dump(servo,conf)
         else:
@@ -46,7 +47,7 @@ def writeYaml(s=None):
 servo = readYaml()
 
 if servo == None:
-    with open('{}/src/servoBackUp.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
+    with open('{}/src/configurationBackUp.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
         servoBackUp = yaml.load(conf, Loader=yaml.FullLoader)
     writeYaml(servoBackUp)
     servo = readYaml()
@@ -93,9 +94,7 @@ def changeDegree(pin,newDegree,time1=0.05,update=5):
         
 def takePosition():
     changeDegree([7,8],[180,0])
-    print('firsr call')
     changeDegree([0,1,2,3,4,5,6,7,8,9,10,11],[0,50,130,0,170,170,0,180,0,60,150,0])
-    print('second call')
 
 
 def changeDegreeGpio(pin,degree,update,duration):
@@ -158,11 +157,11 @@ def yes(times=3):
 
 def no(times=3):
     for i in range(0,times):
-        changeDegreeGpio([0],[70],5,0.05)
+        changeDegree([15],[70],5,0.05)
         time.sleep(0.2)
-        changeDegreeGpio([0],[110],5,0.05)
+        changeDegree([15],[110],5,0.05)
         time.sleep(0.2)
-    changeDegreeGpio([0],[90],5,0.05)
+    changeDegree([15],[90],5,0.05)
 
 def move_head(times=3):
     for i in range(0,times):
@@ -174,7 +173,7 @@ def move_head(times=3):
     changeDegreeGpio([0],[90],10,0.01)
 
 def random0():
-    r = random.randrange(1,3)
+    r = random.randrange(1,10000000)%3
     if(r==1):
         changeDegree([0],[20])
         changeDegree([0],[0])      
@@ -208,98 +207,46 @@ def random1():
         changeDegree([3,4],[0,180])
 
 def random2():
-    r = random.randrange(1,5)
-    if(r==1):
-        changeDegree([0],[10])
-    elif(r==2):
-        changeDegree([0],[10])
-    elif(r==3):
-        changeDegree([0],[10])
-    elif(r==4):
-        changeDegree([0],[10])
-    else:
-        changeDegree([0],[10])
+    changeDegree([3,4],[20,150])
+    pin = [7,8,9,10]
+    deg = [[160,0,60,100],[180,20,100,140]]
+    ok = [0,0,0,0]
+    select = [1,2,0,3,1,0,3,2,1,0,2,3,1,2,3,0,3,1,2,3,1,2,3,0,3,1]
+    for i in range(0,15):
+        r = select[i%len(select)]%4
+        print (' move ',r)
+        changeDegree([pin[r]],[deg[ok[r]][r]])
+        ok[r]^=1
+    takePosition()
 
 def random3():
-    r = random.randrange(1,5)
-    if(r==1):
-        changeDegree([0],[10])
-    elif(r==2):
-        changeDegree([0],[10])
-    elif(r==3):
-        changeDegree([0],[10])
-    elif(r==4):
-        changeDegree([0],[10])
-    else:
-        changeDegree([0],[10])
+    changeDegree([3,4],[20,150])
+    pin = [7,8,9,10]
+    deg = [[160,0,60,100],[180,20,100,140]]
+    ok = [0,0,0,0]
+    for i in range(0,15):
+        r = random.randrange(1,1000000)%4
+        print (' move ',r)
+        changeDegree([pin[r]],[deg[ok[r]][r]])
+    takePosition()
 
-def random4():
-    r = random.randrange(1,5)
-    if(r==1):
-        changeDegree([0],[10])
-    elif(r==2):
-        changeDegree([0],[10])
-    elif(r==3):
-        changeDegree([0],[10])
-    elif(r==4):
-        changeDegree([0],[10])
-    else:
-        changeDegree([0],[10])
 
-def random5():
-    r = random.randrange(1,5)
-    if(r==1):
-        changeDegree([0],[10])
-    elif(r==2):
-        changeDegree([0],[10])
-    elif(r==3):
-        changeDegree([0],[10])
-    elif(r==4):
-        changeDegree([0],[10])
-    else:
-        changeDegree([0],[10])
-
-def random6():
-    r = random.randrange(1,5)
-    if(r==1):
-        changeDegree([0],[10])
-    elif(r==2):
-        changeDegree([0],[10])
-    elif(r==3):
-        changeDegree([0],[10])
-    elif(r==4):
-        changeDegree([0],[10])
-    else:
-        changeDegree([0],[10])
-
-def random7():
-    r = random.randrange(1,5)
-    if(r==1):
-        changeDegree([3,4,8,1,5,9,2,6,10,7,8],[70,120,50,80,40,180,110,70,20,100,80],0.05,5)
-        for i in range(0,5):
-            changeDegree([3,4],[100,80],0.1)
-            changeDegree([7],[110],0.1)
-            changeDegree([7],[90],0.1)
-            changeDegree([8],[110],0.1)
-            changeDegree([8],[90],0.1)
-            changeDegree([5],[70],0.1)
-            changeDegree([5],[100],0.1)
-            changeDegree([6],[80],0.1)
-            changeDegree([6],[120],0.1)
-            changeDegree([1],[60],0.1)
-            changeDegree([1],[80],0.1)
-        takePosition()
-    elif(r==2):
-        changeDegree([0],[10])
-    elif(r==3):
-        changeDegree([0],[10])
-    elif(r==4):
-        changeDegree([0],[10])
-    else:
-        changeDegree([0],[10])
+def randomCall(t):
+    changeDegree([3,4,5,6,7,8,9,10],[50,110,80,70,100,80,160,20])
+    pin = [5,6,7,8]
+    deg = [[80,50,100,70],[110,90,110,90]]
+    select = [89,93,472,347,2, 34, 134, 1937, 1983, 1739, 107, 894, 48, 28, 2048,589,689,123, 34,27,4,91,102,893,10283,53,1283,9485,1973,873,1973,0,10973]
+    ok = [0,0,0,0]
+    ln = len(select)
+    for i in range(0,t*3):
+        r = select[i%16]%4
+        changeDegree([pin[r]],[deg[ok[r]][r]])
+        ok[r]^=1
+    takePosition()
 
 
 def expression(t):
+    print (' i got value of t is : ',t)
     if(t==0):
         random0()
     elif(t==1):
@@ -308,16 +255,17 @@ def expression(t):
         random2()
     elif(t==3):
         random3()
-    elif(t==4):
-        random4()
-    elif(t==5):
-        random5()
-    elif(t==6):
-        random6()
     else:
-        random7()
-
+        randomCall(t)
 
 def speakOnline(t):
     expression(t)
+
+def speakOffline(speech):
+    t = int(len(speech)/15)
+    print ('Offline t value is : ',t)
+    p1 = multiprocessing.Process(target=expression,args=[t])
+    p1.start()
+    say(speech)
+
 

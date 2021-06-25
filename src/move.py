@@ -29,13 +29,13 @@ hand = ServoKit(channels=16)
 ROOT_PATH = os.path.realpath(os.path.join(__file__, '..', '..'))
 
 def readYaml():
-    with open('{}/src/servo.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
+    with open('{}/src/configuration.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
         servo = yaml.load(conf, Loader=yaml.FullLoader)
     return servo
 
 
 def writeYaml(s=None):
-    with open('{}/src/servo.yaml'.format(ROOT_PATH),'w', encoding='utf8') as conf:
+    with open('{}/src/configuration.yaml'.format(ROOT_PATH),'w', encoding='utf8') as conf:
         if s==None:
             yaml.dump(servo,conf)
         else:
@@ -45,7 +45,7 @@ def writeYaml(s=None):
 servo = readYaml()
 
 if servo == None:
-    with open('{}/src/servoBackUp.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
+    with open('{}/src/configurationBackUp.yaml'.format(ROOT_PATH),'r+', encoding='utf8') as conf:
         servoBackUp = yaml.load(conf, Loader=yaml.FullLoader)
     writeYaml(servoBackUp)
     servo = readYaml()
@@ -60,6 +60,7 @@ Current = servo['Current_Position']['I2C']
 InitialGpio = servo['Initial_Position']['Gpio']
 CurrentGpio = servo['Current_Position']['Gpio']
 GpioPin     = servo['Pin']['Gpio']
+I2CPin      = servo['Pin']['I2C']
 
 
 for i in range(0,6):
@@ -91,7 +92,7 @@ def changeDegree(pin,newDegree,time1=0.05,time2=0):
         
 def takePosition():
     changeDegree([7,8],[180,0])
-    changeDegree([0,1,2,3,4,5,6,7,8,9,10,11],[0,50,130,0,170,170,0,180,0,60,150,0])
+    changeDegree(I2CPin,Initial)
 
 
 def changeDegreeGpio(pin,degree,update,duration):

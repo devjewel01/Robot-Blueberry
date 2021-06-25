@@ -290,9 +290,6 @@ class Myassistant():
             self.assistant.stop_conversation()
             sensorOff()
 
-        if 'google'.lower() in str(usrcmd).lower():
-            self.assistant.stop_conversation()
-            say("sorry, call me robot Blueberry")
 
 
     def main(self):

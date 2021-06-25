@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Environment=VIRTUAL_ENV=/home/pi/env
 Environment=PATH=/home/pi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ExecStart=/home/pi/env/bin/python -u /home/pi/Robot-Blueberry/src/main.py --project_id 'blueberry-f9eae' --device_model_id 'blueberry-f9eae-blueberry-rypaon'
+ExecStart=/home/pi/env/bin/python -u /home/pi/Robot-Blueberry/src/main.py --project_id 'blueberry1-f8eca' --device_model_id 'blueberry1-f8eca-robot-6uiju9'
 
 WorkingDirectory=/home/pi/
 StandardOutput=inherit
@@ -16,6 +16,3 @@ User=pi
 
 [Install]
 WantedBy=multi-user.target
-
-
-

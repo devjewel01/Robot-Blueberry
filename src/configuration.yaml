@@ -1,6 +1,6 @@
 Current_Position:
   Gpio:
-  - 90
+  - 180
   - 180
   - 180
   - 0
@@ -8,17 +8,21 @@ Current_Position:
   - 0
   I2C:
   - 0
-  - 50
-  - 130
+  - 30
+  - 110
   - 0
-  - 170
-  - 170
+  - 150
+  - 150
   - 0
   - 180
   - 0
   - 60
+  - 150
+  - 0
+  - 180
   - 180
   - 0
+  - 90
 DC_Motor:
   left:
     back: 20
@@ -30,7 +34,7 @@ DC_Motor:
     front: 19
 Initial_Position:
   Gpio:
-  - 90
+  - 180
   - 180
   - 180
   - 0
@@ -49,6 +53,10 @@ Initial_Position:
   - 60
   - 150
   - 0
+  - 180
+  - 180
+  - 0
+  - 90
 Pin:
   Gpio:
   - 12
@@ -84,3 +92,5 @@ Sensor:
   ultrasonic:
     echo: 11
     trigger: 8
+
+

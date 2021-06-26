@@ -1,15 +1,10 @@
 # Robot Blueberry
 
-[<img src="Store/pic/DSC_0209.JPG" align="right" width="50%" height="10%" />](https://youtu.be/5AGnB9Y9vIk)
+[<img src="Store/gif/tata.gif" align="right" width="70%"  />](https://youtu.be/5AGnB9Y9vIk)
 
 
+## Index
 
-<details>
-    <summary>
-        <strong style="font-size:300%;">
-            Index
-        </strong>
-    </summary>
  <a href="#Robot_blueberry">Introduction</a></br>
  <a href="#Device">Here we used</a></br>
  <a href="#features">Features</a></br>
@@ -23,7 +18,7 @@
  <a href="#Video">Robot video</a></br>
  <a href="#News">News</a></br>
  <a href="#Acknowledge">Acknowledge</a></br>
-</details>
+
 
 <p id="Robot_blueberry"></p>
 
@@ -258,8 +253,8 @@
         <strong id="Video">Videos:</strong>
     </summary>
 
-[<img src="Store/gif/intro.gif" width="50%"/>](https://youtu.be/NaSFW2tjuGQ)
-[<img src="Store/gif/salute.gif" width="50%"/>](https://youtu.be/5AGnB9Y9vIk)
+[<img src="Store/gif/intro.gif" />](https://youtu.be/NaSFW2tjuGQ)
+[<img src="Store/gif/salute.gif" />](https://youtu.be/5AGnB9Y9vIk)
 
 </details>
 

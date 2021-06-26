@@ -60,7 +60,7 @@
 
 <br />
 
-<h1 id="features">Features:</h1>
+<h2 id="features">Features:</h2>
 
 * Take a command and replay accrding to command
 * Hand's UP
@@ -81,7 +81,7 @@
 <img align="right" src="https://i.imgur.com/BzOnbkS.gif" />
 
 
-<h1 id="languageTools">Programming Language and tools we used - </h1>
+<h2 id="languageTools">Programming Language and tools we used - </h2>
 
 | Python | C++ |  Bash | Terminal | Raspberry Pi |  Arduino |
 | ------ | ----| ------| -------- | ------------ | --------- |
@@ -90,7 +90,7 @@
 <br />
 <br />
 
-<h1 id="Diageam">Block Diagram:</h1>
+<h2 id="Diageam">Block Diagram:</h2>
 
 <img width="60%"  src="Store/pic/2021-05-23_1511451.png">
 
@@ -125,7 +125,7 @@
 
 <details>
     <summary>
-        <strong id="DCMotorConnection">DC motor configuration</strong>
+        <strong  id="DCMotorConnection">DC motor configuration</strong>
     </summary>
 
 
@@ -139,7 +139,7 @@
 
 <details>
     <summary>
-        <strong id="sensorConfig">Sensor configuration</strong>
+        <strong  id="sensorConfig">Sensor configuration</strong>
     </summary>
 
 
@@ -154,7 +154,7 @@
 
 </details>
 
-<h3 id="ServoMove">Servo Move Record:</h3>
+<h2 id="ServoMove">Servo Move Record:</h2>
 
 <details>
     <summary>Salute</summary>
@@ -253,7 +253,7 @@
 </details>
 
 
-<h3 id="memory">Memories</h3>
+<h2 id="memory">Memories</h2>
 <details>
     <summary>
         <strong>Photos:</strong>
@@ -286,7 +286,7 @@
 
 </details>
 
-<h3 id="Acknowledge"> Acknowledge</h3>
+<h2 id="Acknowledge"> Acknowledge</h2>
 
  * [Shivasiddharth](https://github.com/shivasiddharth)
  * [Picovoice](https://github.com/Picovoice)

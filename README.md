@@ -258,8 +258,8 @@
         <strong id="Video">Videos:</strong>
     </summary>
 
-[<img src="https://j.gifs.com/z6KlQY.gif" width="50%"/>](https://youtu.be/NaSFW2tjuGQ)
-[<img src="https://j.gifs.com/w0mg7R.gif" width="50%"/>](https://youtu.be/5AGnB9Y9vIk)
+[<img src="Store/gif/intro.gif" width="50%"/>](https://youtu.be/NaSFW2tjuGQ)
+[<img src="Store/gif/salute.gif" width="50%"/>](https://youtu.be/5AGnB9Y9vIk)
 
 </details>
 

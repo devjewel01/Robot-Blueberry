@@ -1,22 +1,20 @@
 # Robot Blueberry
 
-[<img src="Store/gif/tata.gif" align="right" width="70%"  />](https://youtu.be/5AGnB9Y9vIk)
-
 
 ## Index
 
+[<img src="Store/gif/tata.gif" align="right" width="60%"  />](https://youtu.be/5AGnB9Y9vIk)
+
  <a href="#Robot_blueberry">Introduction</a></br>
- <a href="#Device">Here we used</a></br>
+ <a href="#Device">Component and Device</a></br>
  <a href="#features">Features</a></br>
  <a href="#languageTools">Language and Tools</a></br>
- <a href="#Diageam">Position Block Diagram</a></br>
- <a href="#servoInitialization">Servo Inital Position</a></br>
- <a href="#DCMotorConnection">DC motor connection:</a></br>
- <a href="#ServoMove">Servo Move</a></br>
- <a href="#servoInitialization">Servo Inital Position</a></br>
- <a href="#Pic">Robot pic</a></br>
- <a href="#Video">Robot video</a></br>
- <a href="#News">News</a></br>
+ <a href="#Diageam">Block diagram</a></br>
+ <a href="#servoInitialization">Servo configuration</a></br>
+ <a href="#DCMotorConnection">DC motor configuration</a></br>
+ <a href="#sensorConfig">Sensor Configuration</a></br>
+ <a href="#ServoMove">Servo Movement record</a></br>
+ <a href="#memory">Memories</a></br>
  <a href="#Acknowledge">Acknowledge</a></br>
 
 
@@ -42,16 +40,20 @@
 <img src="Store/gif/robothand.gif" align="right" width="30%" />
 
 
-<h3 id="Device">Component and Device</h3>
+<h2 id="Device">Component and Device</h2>
 
-1. **Raspberry Pi** as a cpu of our robot
-2. **Servo Motors** for move of by parts
-3. **DC Motors** for displacement
-4. **Ultrasonic Sensors** for measurement of distance and obstacles
-5. **LED** for listening(green) and speakinging(red) indicators
-6. **LCD Display** for showing message
-7. **Aluminium** sheet, **Aluminum** angle, **SS** for making robot body
-8. **Makeup Mannequin** as a robot face
+1. **Raspberry Pi** microprocessor
+2. **Arduino** microcontroller
+3. **Servo Motors** 
+4. **DC Motors** 
+5. **Ultrasonic Sensors** 
+6. **LCD Display** 
+7. **Gas sensor** 
+8. **Smoke sensor**
+9.  **Fire sensor**
+10. **Gyroscope sensor**
+11. **Gps Tracker** 
+12. **LED matrix cube**
 
 <!--lint ignore double-link-->
 <img src="Store/gif/pushup.gif" align="right" width="30%" />
@@ -72,6 +74,7 @@
 * Hug
 * Move at any direction
 * Touch own body parts
+* active sensor and read value and give the output
 
 
 <!--lint ignore double-link-->
@@ -87,13 +90,13 @@
 <br />
 <br />
 
-<h1 id="Diageam">Servo Motor Position Block Diagram:</h1>
+<h1 id="Diageam">Block Diagram:</h1>
 
 <img width="60%"  src="Store/pic/2021-05-23_1511451.png">
-<details>
-    <summary>
-        <strong id="servoInitialization">Servo Initial positions:</strong>
-    </summary>
+
+
+<h2 id="servoInitialization">Servo Configuration</h2>
+    
  
 |servo no | connection | position   | Limitation | Direction           | Description |  
 | ------- | ---------- | ---------- | -----------|  -------            | ---------   |
@@ -120,10 +123,9 @@
 | 21      | gpio-23(11)|    0       |        180 | Open/Close          |
 | 22      | gpio-24(8) |    0       |        180 | Open/Close          |
 
-</details>
 <details>
     <summary>
-        <strong id="DCMotorConnection">DC motor connection:</strong>
+        <strong id="DCMotorConnection">DC motor configuration</strong>
     </summary>
 
 
@@ -133,7 +135,27 @@
 | Left     | 15(22)      |  37(26)    |  38(20)  |
 
 </details>
-<h3 id="ServoMove">Servo Move:</h3>
+
+
+<details>
+    <summary>
+        <strong id="sensorConfig">Sensor configuration</strong>
+    </summary>
+
+
+| Sensor   |  Pin        | 
+| -------  | ---------   | 
+| Gas      |   4          |  
+| Smoke    |    7         |  
+| Fire     |     13        |  
+| Ldr      |     21      |  
+| Gyroscope|       I2C      |  
+|Ultrasonic|      echo:11, trigger:8       |  
+
+</details>
+
+<h3 id="ServoMove">Servo Move Record:</h3>
+
 <details>
     <summary>Salute</summary>
 
@@ -177,8 +199,7 @@
 |1     |   20	 |  2   |	160  |
 |5     |  170    |	6   |   10   |
 
-<br/>
-<br/>
+
 </details>
 
 <details>
@@ -198,7 +219,7 @@
 | 7	  | 155    |
 | 7	  | 125    |
  
-** 10 times change**
+**10 times change**
 
 >normal
  
@@ -207,14 +228,10 @@
 | 7	  | 180    |
 | 3	  |   0    |
 
-<br/>
-<br/>
-
 </details>
+
 <details>
-    <summary>
-        Hand's Up
-    </summary>
+    <summary> Hand's Up </summary>
 
 >start
 
@@ -235,11 +252,11 @@
 
 </details>
 
-<br/>
 
+<h3 id="memory">Memories</h3>
 <details>
     <summary>
-        <strong id="Pic">Photos:</strong>
+        <strong>Photos:</strong>
     </summary>
     <img src="Store/pic/DSC_0205.JPG" width="50%"/>
     <img src="Store/pic/DSC_0213.JPG" width="50%"/>
@@ -250,7 +267,7 @@
 
 <details>
     <summary>
-        <strong id="Video">Videos:</strong>
+        <strong>Videos:</strong>
     </summary>
 
 [<img src="Store/gif/intro.gif" />](https://youtu.be/NaSFW2tjuGQ)
@@ -261,7 +278,7 @@
 
 <details>
     <summary>
-        <strong id="News">News:</strong>
+        <strong >News:</strong>
     </summary>
     
 * [shadow news](https://www.shadow.com.bd/?p=28267)

@@ -5,17 +5,27 @@
 
 [<img src="Store/gif/tata.gif" align="right" width="60%"  />](https://youtu.be/5AGnB9Y9vIk)
 
- <a href="#Robot_blueberry">Introduction</a></br>
- <a href="#Device">Component and Device</a></br>
- <a href="#features">Features</a></br>
- <a href="#languageTools">Language and Tools</a></br>
- <a href="#Diageam">Block diagram</a></br>
- <a href="#servoInitialization">Servo configuration</a></br>
- <a href="#DCMotorConnection">DC motor configuration</a></br>
- <a href="#sensorConfig">Sensor Configuration</a></br>
- <a href="#ServoMove">Servo Movement record</a></br>
- <a href="#memory">Memories</a></br>
- <a href="#Acknowledge">Acknowledge</a></br>
+ <a href="#Robot_blueberry">Introduction</a>
+ 
+ <a href="#Device">Component and Device</a>
+ 
+ <a href="#features">Features</a>
+ 
+ <a href="#languageTools">Language and Tools</a>
+ 
+ <a href="#Diageam">Block diagram</a>
+
+ <a href="#servoInitialization">Servo configuration</a>
+ 
+ <a href="#DCMotorConnection">DC motor configuration</a>
+ 
+ <a href="#sensorConfig">Sensor Configuration</a>
+ 
+ <a href="#ServoMove">Servo Movement record</a>
+ 
+ <a href="#memory">Memories</a>
+ 
+ <a href="#Acknowledge">Acknowledge</a>
 
 
 <p id="Robot_blueberry"></p>
